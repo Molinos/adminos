@@ -1,0 +1,26 @@
+.f__fieldset
+  .hidden
+    = f.input :behavior, as: :select, wrapper: :select,
+       collection: resource.class::BEHAVIORS.map { |b| [resource.class.human_behavior_name(b), b]},
+       include_blank: false
+  = f.input :name
+  = f.input :nav_name
+  = f.input :slug
+  = f.input :published, wrapper: :check
+  = f.input :nav_published, wrapper: :check
+
+  - if !resource.new_record? && !resource.editable_behavior?
+    .alert.alert-info
+      = render partial: 'shared/helpers/alert_close'
+      .text= I18n.t 'admin.pages.alerts.behavior_not_default', behavior: resource.human_behavior_name
+  - elsif resource.children.present? && resource.children.published.present?
+    .alert.alert-info
+      = render partial: 'shared/helpers/alert_close'
+      .text= I18n.t 'admin.pages.alerts.category'
+  - else
+    = f.rich_text_area :content
+
+.f__fieldset
+  .f__legend= t 'labels.admin.legend.seo'
+  = f.input :meta_title
+  = f.input :meta_description, as: :string

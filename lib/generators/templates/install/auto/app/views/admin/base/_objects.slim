@@ -1,0 +1,19 @@
+- if objects.present?
+  - if controller.respond_to?(:sort)
+    - if objects.respond_to?(:apply_sortable_order)
+      - sort = {class: 'with-apply-sortable-order', data: {sortable: url_for(action: :sort)}}
+    - if objects.first.respond_to?(:move_to)
+      - sort = {class: 'with-move-to'}
+  - pagination = capture do
+    - if collection.respond_to?(:current_page)
+      = paginate collection, theme: :admin
+
+  - attrs = sort || {}
+
+  = pagination
+  .table-list
+    table.table.table-hover.table-sm
+      tbody *attrs
+        - objects.each do |object|
+          = render partial: 'object', object: object
+  = pagination

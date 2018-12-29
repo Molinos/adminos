@@ -1,0 +1,17 @@
+.list-item rel=object.id id="#{object.class.name.underscore}_#{object.id}" class=(optional_cls('list-item--unpublished' => !object.published?))
+  .list-item__move
+    .icon.icon--move class="-move"
+  .list-item__name
+    = link_to object.reasonable_name, polymorphic_path([:admin, object], action: :edit)
+  .list-item__controls
+    .list-item__group
+      - if object.published?
+        = admin_published_sign(class: '-state')
+      - else
+        = admin_unpublished_sign(class: '-state')
+    .list-item__group
+      = object_link_duplication(object)
+    .list-item__group
+      = object_link_edit(object)
+  .list-item__check
+    = admin_cb(object)

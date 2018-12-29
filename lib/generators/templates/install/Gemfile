@@ -1,0 +1,57 @@
+source 'https://rubygems.org'
+
+gem 'rails', '~> 5.2'
+gem 'pg'
+gem 'puma', '~> 3.7'
+
+gem 'jbuilder', '~> 2.5'
+gem 'role_model'
+gem 'webpacker', '~> 3.5'
+gem "actiontext", github: "rails/actiontext", require: "action_text"
+gem "image_processing", "~> 1.2" # for Active Storage variants
+
+group :production, :staging do
+  gem 'unicorn'
+end
+
+group :development do
+  # gem 'spring'
+  gem 'capistrano', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-rvm', require: false
+  gem 'capistrano3-unicorn', require: false
+
+  gem 'guard'
+  gem 'guard-livereload', '~> 2.5', require: false
+
+  gem 'listen', '~> 3.0.5'
+end
+
+group :development, :test do
+  # gem 'spring-commands-rspec' #for spring speed test
+  gem 'pry'
+  gem 'shoulda-matchers'
+end
+
+gem 'whenever', require: false
+
+gem 'capistrano-db-tasks', require: false
+
+gem 'sanitize'
+
+gem 'mini_magick'
+
+gem 'paper_trail'
+
+gem 'postal-rails', '~> 1.0'
+
+gem 'scoped_search'
+
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-vkontakte'
+
+gem 'axlsx', git: 'https://github.com/randym/axlsx.git'
+gem 'spreadsheet_architect'

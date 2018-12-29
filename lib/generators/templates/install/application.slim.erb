@@ -1,0 +1,31 @@
+doctype html
+html#no-js lang="ru"
+  head
+    meta charset="utf-8"
+
+    title= show_title || '<%= application_name.camelize %>'
+    meta name="description" content=settings&.index_meta_description
+
+    meta name="viewport" content="width=device-width, initial-scale=1"
+    <% if ENV['CMSMG'] %>
+      meta name="cmsmagazine" content="<%= ENV['CMSMG'] %>"
+    <% end %>
+    # link rel="icon" type="image/png" sizes="16x16" href="/favicon.png"
+    # link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"
+
+    = stylesheet_link_tag :application, media: 'all'
+
+    javascript:
+      document.getElementById('no-js').id = 'js';
+
+    = csrf_meta_tags
+
+  body
+    = yield
+  <% if @settings[:add_pages] %>
+    // Вывод меню Page
+    / = nested_li @pages do |page|
+      = link_to page.name, page.absolute_path
+  <% end %>
+    = javascript_include_tag :application
+    = yield :javascript

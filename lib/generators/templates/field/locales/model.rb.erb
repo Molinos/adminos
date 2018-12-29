@@ -1,0 +1,6 @@
+
+  translates :name, <%= attributes.map{|a| ":#{a.name}" }.compact.join(', ') %>
+
+  accepts_nested_attributes_for :translations
+
+  validates_with LocaleValidator

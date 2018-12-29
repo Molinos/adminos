@@ -1,0 +1,9 @@
+group :development, :test do
+  # gem 'spring-commands-rspec' #for spring speed test
+  gem 'database_cleaner'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'minitest'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+end

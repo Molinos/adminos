@@ -1,0 +1,4 @@
+.f__fieldset
+<% attributes.select(&:locale).each do |attribute| -%>
+<%= "  = f.input :#{attribute.name}\n" -%>
+<% end -%>

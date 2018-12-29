@@ -1,0 +1,40 @@
+variables:
+  RAILS_ENV: test
+
+before_script:
+  - rvm install $(cat .ruby-version)
+  - rvm use $(cat .ruby-version)
+  - gem install bundler --no-ri --no-rdoc
+  - bundle config build.pg --with-pg-config=/usr/pgsql-9.4/bin/pg_config
+  - bin/setup
+
+cache:
+  untracked: true
+  paths:
+    - node_modules
+
+deploy to staging:
+  stage: deploy
+  script:
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo -e "$SSH_STAGING_KEY")
+    - bin/cap staging deploy
+  only:
+    refs: [develop]
+  when: manual
+  environment:
+    name: staging
+    url: http://staging.example.test
+
+deploy to production:
+  stage: deploy
+  script:
+   - eval $(ssh-agent -s)
+   - ssh-add <(echo -e "$SSH_PRODUCTION_KEY")
+   - bin/cap production deploy
+  only:
+    refs: [master]
+  when: manual
+  environment:
+    name: production
+    url: http://example.test

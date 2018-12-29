@@ -1,0 +1,18 @@
+before_script:
+  - ruby -v
+  - rvm install 2.5.1
+  - rvm use 2.5.1
+  - gem install bundler
+  - bundle
+
+test:
+  script: rspec
+  artifacts:
+    paths:
+      - coverage
+
+lint:
+  script: rake lint
+  allow_failure: true
+  artifacts:
+    untracked: true

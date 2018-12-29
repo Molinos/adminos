@@ -1,0 +1,7 @@
+.modal.fade id="authenticationModal" tabindex="-1" role="dialog"
+  .modal-header
+    button.close(type="button" role="dialog" data-dismiss="modal") x
+    h3 Регистрация через социальные сети
+  .modal-body
+    p <strong>Если</strong> у вас уже есть активная учетная запись, вы можете привязать к ней профиль социальной сети, <strong>иначе</strong> просто закройте это окно.
+    = render 'authentications/form'

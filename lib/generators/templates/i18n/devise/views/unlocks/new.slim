@@ -1,0 +1,11 @@
+/
+  <h2>Resend unlock instructions</h2>
+  
+  <haml:loud> form_for(resource, :as =&amp;gt; resource_name, :url =&amp;gt; unlock_path(resource_name), :html =&amp;gt; { :method =&amp;gt; :post }) do |f| </haml:loud><haml:block>
+  
+  <div><haml:loud> f.label :email </haml:loud><br />
+  <haml:loud> f.email_field :email </haml:loud></div>
+  
+  <div><haml:loud> f.submit &amp;quot;Resend unlock instructions&amp;quot; </haml:loud></div>
+  </haml:block>
+  <haml:loud> render &amp;quot;links&amp;quot; </haml:loud>

@@ -1,0 +1,27 @@
+- parent_object = begin parent_resource rescue nil end
+- object_array = parent_object ? [:admin, parent_object, object] : [:admin, object]
+- is_publishable = object.respond_to?(:published)
+- is_published   = is_publishable && object.published?
+
+- if controller.respond_to?(:sort)
+  - if object.respond_to?(:move_to)
+    - sort = {data: {id: object.id, href: polymorphic_path(object_array, action: :sort)}}
+  - if object.class.respond_to?(:apply_sortable_order)
+    - sort = {rel: object.id, data: {id: object.id, placeholder: object.reasonable_name}}
+
+- attrs = sort || {}
+
+tr id="#{object.class.name.underscore}_#{object.id}" class=optional_cls(unpublished: is_publishable && !is_published) *attrs
+  - if controller.respond_to?(:sort)
+    td.table-list__move
+      .icon.icon--move class="-move"
+  td= link_to object.reasonable_name, polymorphic_path(object_array, action: :edit)
+  td.table-list__controls
+    - if is_publishable
+      - if is_published
+        = admin_published_sign(class: '-state')
+      - else
+        = admin_unpublished_sign(class: '-state')
+    = object_link_edit(object)
+  - if controller.respond_to?(:batch_action)
+    td.table-list__check= admin_cb(object)

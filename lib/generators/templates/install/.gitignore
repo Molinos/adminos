@@ -1,0 +1,11 @@
+/.bundle
+/config/application.yml
+/config/database.yml
+/log/*.log
+/log/*.pid
+/public/assets/*
+/public/system/*
+/tmp
+/db/*.sql.bz2
+.env
+spec/examples.txt

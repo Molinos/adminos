@@ -1,0 +1,47 @@
+- collection_title
+= collection_header button_new: false
+
+- if collection.present?
+  - pagination = capture do
+    - if collection.respond_to?(:current_page)
+      = paginate collection, theme: :admin
+
+  - list = capture do
+    = pagination
+    .table-list
+      table.table.table-hover.table-sm
+        thead
+          tr
+            th= resource_class.human_attribute_name(:item)
+            th= resource_class.human_attribute_name(:item_type)
+            th= resource_class.human_attribute_name(:event)
+            th= resource_class.human_attribute_name(:whodunnit)
+            th= resource_class.human_attribute_name(:created_at)
+            th
+            th
+        tbody
+          - collection.each do |object|
+            tr
+              td= version_item object if object.item
+              td= object.item_type.constantize.model_name.human if object.item_type
+              td= version_event object
+              td= object.whodunnit unless version_login?(object)
+              td= l object.created_at, format: :admin
+              td.table-list__controls
+                = link_to t('labels.admin.show'), admin_version_path(object), class: 'icon icon--diff -edit', title: t('labels.admin.show')
+              td.table-list__check
+                = admin_cb(object)
+    = pagination
+
+  - if controller.respond_to?(:batch_action)
+    = batch_actions_tag publication: (collection.respond_to?(:set_each_published_on)),
+      nav_publication: (collection.respond_to?(:set_nav_published_on)) do
+      = list
+  - else
+    = list
+
+  p
+  = link_to 'Сохранить таблицу',
+        admin_versions_path(format: :xlsx),
+        target: '_blank',
+        class: 'btn btn-primary btn-small'

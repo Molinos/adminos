@@ -1,0 +1,53 @@
+<%= application_name.camelize %>::Application.routes.draw do
+  devise_for :users, skip: [:session, :password, :registration, :confirmation],
+    controllers: { omniauth_callbacks: 'authentications' }
+
+  namespace :admin do
+    resources :helps, only: :index
+    resource  :settings, only: [:edit, :update]
+
+    resources :users, except: :show do
+      collection { post :batch_action }
+    end
+
+    resources :versions, only: [:index, :show] do
+      collection { post :batch_action }
+    end
+
+    resources :pages, except: :show do
+      collection { post :batch_action }
+      member { put :drop }
+      member { post :duplication }
+    end
+
+    root to: 'pages#index', as: :root
+  end
+
+  devise_for :users, skip: :omniauth_callbacks
+  devise_scope :user do
+    get 'authentications/new', to: 'authentications#new'
+    post 'authentications/link', to: 'authentications#link'
+  end
+
+  resources :templates, only: [:index, :show]
+
+  root to: 'index#index'
+
+  begin
+    Page.for_routes.group_by(&:behavior).each do |behavior, pages|
+      pages.each do |page|
+        case behavior
+        when nil
+        else
+          resource( "#{page.class.name.underscore}_#{page.id}",
+                    path:       page.absolute_path,
+                    controller: behavior,
+                    only:       :show,
+                    page_id:    page.id )
+        end
+      end
+    end
+  rescue
+    nil
+  end
+end

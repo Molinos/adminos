@@ -1,0 +1,9 @@
+-# - message = 'debugging info'
+-# - kind    = :notice
+-# - kind    = :error
+- css_class = css_class << {error: 'alert-error', notice: 'alert-success'}[kind]
+.message
+  .alert.alert-info.alert-dismissible.fade.in(class=css_class.uniq.compact style=style)
+    - if options[:with_close_bullet]
+      = alert_close
+    span(style=style)= message

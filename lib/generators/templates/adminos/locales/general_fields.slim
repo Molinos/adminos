@@ -1,0 +1,7 @@
+.f__fieldset
+  = f.input :slug
+  = f.input :published, wrapper: :check
+<%= "  = f.input :nav_published, wrapper: :check\n" if options.type == 'section' -%>
+<% attributes.each do |attribute| -%>
+<%= "  = f.input :#{attribute.name}\n" unless attribute.locale -%>
+<% end -%>

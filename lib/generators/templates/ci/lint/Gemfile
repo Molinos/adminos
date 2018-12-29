@@ -1,0 +1,3 @@
+group :lint do
+  gem 'rubocop'
+end

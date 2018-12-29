@@ -1,0 +1,13 @@
+.f__fieldset
+  = f.input :name
+  = f.input :nav_name
+
+  = f.rich_text_area :content
+  / = f.input :body
+  /.kaya-please
+    = f.input_field :body, as: :text, id: 'kaya-editor', value: f.object.read_attribute(:body)
+
+.f__fieldset
+  .f__legend= t 'labels.admin.legend.seo'
+  = f.input :meta_title
+  = f.input :meta_description, as: :string

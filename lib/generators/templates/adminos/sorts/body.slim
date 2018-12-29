@@ -1,0 +1,3 @@
+<% attributes.each do |attribute| -%>
+<%= "            td= object.#{attribute.name}\n" if attribute.sort -%>
+<% end -%>

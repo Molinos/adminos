@@ -1,0 +1,33 @@
+- collection_title
+= collection_header
+
+= render 'shared/admin/search_form'
+
+- if collection.present?
+  - pagination = capture do
+    = paginate collection, theme: :admin
+
+  - list = capture do
+    = pagination
+    .table-list
+      table.table.table-hover.table-sm
+        thead
+          tr
+            th= admin_sortable_column :email, resource_class.human_attribute_name(:email)
+            th= resource_class.human_attribute_name(:roles)
+            th
+            th
+        tbody
+          - collection.each do |object|
+            tr
+              td= link_to object.email, polymorphic_path([:admin, object], action: :edit)
+              td= object.translated_roles
+              td.table-list__controls= object_link_edit(object)
+              td.table-list__check= admin_cb(object)
+    = pagination
+
+  - if controller.respond_to?(:batch_action)
+    = batch_actions_tag do
+      = list
+  - else
+    = list

@@ -1,0 +1,33 @@
+- resource_title
+- if resource.try(:parent).present?
+  - breadcrumbs label: resource.parent.name,
+      url: polymorphic_path([:edit, :admin, resource.parent])
+- breadcrumbs resource_name
+- breadcrumbs label: collection_name, url: admin_index_path(resource.class)
+
+= resource_header
+
+= simple_form_for resource_form_object, wrapper: :admin do |f|
+  .f
+    .f__wrapper
+      / Родительский элемент
+      / Это лажа, но пока пусть будет так...
+      - max_depth = f.object.class.const_get('MAX_DEPTH') rescue 0
+      - if f.object.respond_to?(:parent) && max_depth > 1
+        - f.object.parent_id = params[:parent_id] if action_name == 'new'
+        = f.association :parent, wrapper: :select, input_html: { class: 'select2it' }
+
+      = render 'fields', f: f
+
+      .f-submit.f-submit--fixed
+        .wrapper
+          = f.button :submit, 'Сохранить', class: 'btn btn-primary btn--done'
+          /resource_button_value_main
+          /= f.button :submit, 'Применить', type: 'button', name: 'stay_in_place', class: 'btn btn-secondary js-save-form'
+          = f.button :submit, 'Применить', name: 'stay_in_place', class: 'btn btn-secondary'
+          /resource_button_value_stay
+          /= link_to resource_button_value_cancel,
+              polymorphic_path([:admin, resource.class.name.underscore.pluralize]),
+              class: 'btn btn-secondary'
+
+= render "shared/admin/back_button"

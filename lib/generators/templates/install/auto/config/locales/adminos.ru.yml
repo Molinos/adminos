@@ -1,0 +1,292 @@
+ru:
+  "true": Да
+  "false": Нет
+
+  time:
+    formats:
+      admin: '%e %B %Y, %H:%M'
+      announcement: '%e %B %Y'
+      announcement_index_page: '%d.%m.%Y'
+      announcement_slug: '%Y-%m-%d %H:%M'
+      event: '%d %B'
+      event_day: '%d'
+      event_year: '%d %B %Y'
+      event_full: '%d %B %Y, %A'
+      feedback_request: '%e %B %Y %H:%M'
+      feedback_request_admin_email_subject: '%e %B %Y %H:%M'
+      feedback_request_manageable: '%e %B %Y %H:%M'
+      primary: '%d.%m.%Y'
+      short: '%e %B %Y'
+
+  number:
+    currency:
+      format:
+        format: "%n %u"
+        unit: "руб."
+        separator: ","
+        delimiter: " "
+        precision: 2
+        significant: false
+        strip_insignificant_zeros: false
+
+  errors:
+    messages:
+      invalid: "Имеет неверное значение"
+      empty: "Не может быть пустым"
+      blank: "Не может быть пустым"
+      extension_white_list_error: Неверный формат файла
+
+  attributes:
+    name: Название
+    published: Опубликована
+    nav_name: Название для навигации
+    nav_published: Показывать в навигации
+    slug: URL
+    body: Текст
+    lead: Краткое описание
+    published_at: Дата публикации
+    created_at: Дата
+    meta_title: Title
+    meta_description: Description
+    parent: Родитель
+
+  activerecord:
+    errors:
+      messages:
+        inclusion: "Имеет непредусмотренное значение"
+        exclusion: "Имеет зарезервированное значение"
+        invalid: "Имеет неверное значение"
+        confirmation: "не совпадает с подтверждением"
+        accepted: "Нужно подтвердить"
+        empty: "Не может быть пустым"
+        blank: "Не может быть пустым"
+        too_much_nesting: Итоговая вложенность не может превышать %{count} уровней.
+        too_long:
+          one:   "Слишком большой длины (не может быть больше чем %{count} символ)"
+          few:   "Слишком большой длины (не может быть больше чем %{count} символа)"
+          many:  "Слишком большой длины (не может быть больше чем %{count} символов)"
+          other: "Слишком большой длины (не может быть больше чем %{count} символа)"
+        too_short:
+          one:   "Недостаточной длины (не может быть меньше %{count} символа)"
+          few:   "Недостаточной длины (не может быть меньше %{count} символов)"
+          many:  "Недостаточной длины (не может быть меньше %{count} символов)"
+          other: "Недостаточной длины (не может быть меньше %{count} символа)"
+        wrong_length:
+          one:   "Неверной длины (может быть длиной ровно %{count} символ)"
+          few:   "Неверной длины (может быть длиной ровно %{count} символа)"
+          many:  "Неверной длины (может быть длиной ровно %{count} символов)"
+          other: "Неверной длины (может быть длиной ровно %{count} символа)"
+        taken: "Уже существует"
+        wrong_host: "Email должен принадлежать домену %{host} и должен сущестовать на сервере."
+    models:
+      page: Страница
+      user: Пользователь
+      settings: Настройки
+    attributes:
+      settings:
+        company_name: Название компании
+        contact_email: Контактный e-mail
+        email: E-mail для уведомлений
+        email_header_from: E-mail для FROM
+        index_meta_description: Description
+        index_meta_title: Title
+        per_page: Количество на странице
+        seo_google_analytics: Код Google Analytics
+        seo_yandex_metrika: Код Яндекс.Метрики
+        pr_email: E-mail PR-директора
+        test_emails: E-mail для тестовых писем
+      page:
+        behavior: Тип страницы
+      user:
+        email: E-mail
+        password: Пароль
+        roles: Роли
+        admin: Админ
+      paper_trail/version:
+        item: Объект
+        item_type: Тип
+        event: Событие
+        whodunnit: Юзер
+
+  social:
+    log_in: Войти через социальные сети
+    already_bound: Этот профиль социальной сети уже был привязан
+    bind_success: Вы успешно привязали профиль %{provider} к своей текущей учетной записи
+    login_success: Вы успешно вошли с помощью профиля %{provider}
+    email_bind_success: Профиль %{provider} был привязан к вашему основному аккаунту
+    signup_success: Вы вошли с помощью профиля социальной сети %{provider}
+
+  flash:
+    actions:
+      create:
+        notice: Объект успешно создан
+        alert: Заполните, пожалуйста, форму без ошибок
+      update:
+        notice: Объект успешно обновлен
+        alert: Заполните, пожалуйста, форму без ошибок
+      destroy:
+        notice: Объект успешно удален
+        alert: Объект не может быть удален
+      batch_action:
+        none: Выберите хотя бы один объект
+        notice: Операция завершена успешно
+    access_denied: Доступ запрещен
+
+  simple_form:
+    hints:
+      defaults:
+        slug: Сформируется автоматически, если не задан. Допустимы латинские символы, цифры и дефис.
+    required:
+      text: 'Обязательно'
+
+  views:
+    pagination:
+      first: Первая страница
+      last: Последняя страница
+      next: Следующая страница
+      previous: Предыдущая страница
+      truncate: '...'
+      admin:
+        first: Первая страница
+        last: Последняя страница
+        next: "&raquo;"
+        previous: "&laquo;"
+        truncate: '...'
+
+  labels:
+    application:
+      admin: Панель управления
+    admin:
+      add: Добавить
+      add_child: Добавить подраздел
+      back: Назад
+      cancel: Отменить
+      destroy: Удалить
+      edit: Редактировать
+      show: Просмотр изменений
+      go_to_root: Перейти на сайт
+      info: Справка
+      other: Другое
+      search: Поиск
+      legend:
+        common: Основное
+        seo: SEO
+      logout: Выйти
+      nav_published: В навигации
+      published: Опубликована
+      locked: Закреплена
+      server_restart: Перезагрузить сервер
+      unpublished: Не опубликована
+      batch_actions:
+        destroy: Удалить
+        set_nav_published_off: Убрать из навигации
+        set_nav_published_on: Опубликовать в навигации
+        set_published_off: Снять с публикации
+        set_published_on: Опубликовать
+
+  confirmations:
+    destroy:
+      one: Вы уверены что хотите удалить?
+      many: Вы уверены что хотите удалить эти объекты?
+
+  layouts:
+    application:
+      header: Главная
+      title: Molinos.Ru
+    admin:
+      header: &layouts_admin_header Панель управления
+      title: &layouts_admin_title Панель управления
+
+  admin:
+    actions:
+      create: Создание
+      update: Обновление
+      destroy: Удаление
+    helps:
+      actions:
+        index:
+          header: Панель управления
+          title: *layouts_admin_title
+          legend:
+            edit: Редактирование
+            delete: Удаление
+            move: Сортировка
+            published: Видимость на сайте
+            nav_published: Видимость в навигации
+    users:
+      actions:
+        index:
+          header: Пользователи
+          title: Пользователи
+      labels:
+        actions:
+          create: Добавить пользователя
+          edit: Сохранить пользователя
+          new: Добавить пользователя
+          update: Сохранить пользователя
+        form:
+          login: Войти
+          registration: Зарегистрироваться
+          forgot_password: Восстановить пароль
+          confirm: Я не получил инструкций о подтверждении аккаунта
+          oauth: Войти с помощью
+          remember_me: Запомнить меня
+          password: Пароль
+          password_confirmation: Подтверждение пароля
+          new_password: Новый пароль
+          new_password_confirmation: Подтверждение нового пароля
+        buttons:
+          password_reset: Выслать инструкции
+          password_edit: Изменить пароль
+          register: Зарегистрироваться
+    paper_trail/versions:
+      actions:
+        index:
+          header: Действия
+          title: Действия
+      labels:
+        actions:
+          show: Просмотр изменений
+    settings:
+      actions:
+        index:
+          header: Настройки
+      sets:
+        counters: Счётчики
+        index: Главная страница
+        contact_information: Контактная информация
+      labels:
+        actions:
+          create: Настройки
+          edit: Сохранить настройки
+          update: Сохранить настройки
+        contact_email: E-mail
+    pages:
+      actions:
+        index:
+          header: Страницы
+          title: Страницы
+      alerts:
+        category:
+          Страница является категорией и не может быть отредактирована
+          в визуальном редакторе.
+        behavior_not_default:
+          Страница типа «%{behavior}» не может быть отредактирована
+          в визуальном редакторе.
+      labels:
+        actions:
+          create: Добавить страницу
+          create_stay_in_place: Применить
+          edit: Сохранить страницу
+          edit_stay_in_place: Применить
+          new: Добавить страницу
+          newrak_stay_in_place: Применить
+          update: Сохранить страницу
+          update_stay_in_place: Применить
+
+  pages:
+    behaviors:
+      pages: Типовая страница
+
+  unauthorized:
+    default: Необходимо войти или зарегистрироваться.

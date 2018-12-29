@@ -1,0 +1,3 @@
+= sorted_nested_li(@pages, :name) do |page|
+  = link_to_unless_current (page.nav_name.presence || page.name), page.absolute_path do
+    span= page.nav_name.presence || page.name

@@ -1,0 +1,6 @@
+.breadcrumbs
+  - breadcrumbs.each_with_index do |breadcrumb, index|
+    - if breadcrumb.url.present? && !current_page?(breadcrumb.url)
+      = link_to h(breadcrumb.label),
+        breadcrumb.url,
+        class: 'breadcrumbs__link'

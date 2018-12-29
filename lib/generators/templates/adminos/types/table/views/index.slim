@@ -1,0 +1,31 @@
+- collection_title
+= collection_header
+
+- if collection.present?
+  - pagination = capture do
+    - if collection.respond_to?(:current_page)
+      = paginate collection, theme: :admin
+
+  - list = capture do
+    = pagination
+    .table-list
+      table.table.table-hover.table-sm
+        thead
+          tr
+            th= admin_sortable_column :name, resource_class.human_attribute_name(:name)
+            th
+            th
+        tbody
+          - collection.each do |object|
+            tr
+              td= link_to object.name, polymorphic_path([:admin, object], action: :edit)
+              td.table-list__controls= object_link_edit(object)
+              td.table-list__check= admin_cb(object)
+    = pagination
+
+  - if controller.respond_to?(:batch_action)
+    = batch_actions_tag publication: (collection.respond_to?(:set_each_published_on)),
+      nav_publication: (collection.respond_to?(:set_nav_published_on)) do
+      = list
+  - else
+    = list

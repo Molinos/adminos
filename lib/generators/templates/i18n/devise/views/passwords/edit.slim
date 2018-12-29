@@ -1,0 +1,7 @@
+#devise_page.users_form
+  = simple_form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :put }, validate: false do |f|
+    = f.input :reset_password_token, as: :hidden
+    = f.input :password, placeholder: t('admin.users.labels.form.new_password'), label: false
+    = f.input :password_confirmation, placeholder: t('admin.users.labels.form.new_password_confirmation'), label: false
+    .submit= f.submit t('admin.users.labels.buttons.password_edit'), tabindex: 3, class: bs_btn
+  = render "links"

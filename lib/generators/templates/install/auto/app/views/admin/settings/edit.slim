@@ -1,0 +1,27 @@
+- title 'Настройки'
+= resource_header 'Настройки'
+
+= simple_form_for [:admin, resource], url: admin_settings_path, wrapper: :admin, html: { method: :put } do |f|
+  /.pill-content
+  .f
+    .f__wrapper
+      .f__fieldset
+        = f.input :email
+        = f.input :email_header_from
+        = f.input :per_page, input_html: {class: 'input-mini'}
+        = f.input :copyright
+      .f__fieldset
+        .f__legend= I18n.t 'admin.settings.sets.index'
+        = f.input :index_meta_title
+        = f.input :index_meta_description, as: :string
+      .f__fieldset
+        .f__legend= I18n.t 'admin.settings.sets.contact_information'
+        = f.input :company_name
+        = f.input :contact_email
+      .f__fieldset
+        .f__legend= I18n.t 'admin.settings.sets.counters'
+        = f.input :seo_google_analytics
+        = f.input :seo_yandex_metrika
+      .f-submit.f-submit--fixed
+        .wrapper
+          = f.button :submit, resource_button_value_main, class: 'btn btn-primary btn--done'

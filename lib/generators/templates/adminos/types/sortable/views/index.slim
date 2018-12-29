@@ -1,0 +1,7 @@
+- collection_title
+= collection_header
+
+- if collection.present?
+  = batch_actions_tag publication: true do
+    .list.with-nested-sortable
+      = render partial: 'objects', object: collection.arrange

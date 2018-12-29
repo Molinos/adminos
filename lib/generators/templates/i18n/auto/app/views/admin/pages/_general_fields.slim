@@ -1,0 +1,8 @@
+.f__fieldset
+  .hidden
+    = f.input :behavior, as: :select, wrapper: :select,
+       collection: resource.class::BEHAVIORS.map { |b| [resource.class.human_behavior_name(b), b]},
+       include_blank: false
+  = f.input :slug
+  = f.input :published, wrapper: :check
+  = f.input :nav_published, wrapper: :check

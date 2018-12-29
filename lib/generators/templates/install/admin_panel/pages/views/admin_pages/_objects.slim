@@ -1,0 +1,6 @@
+- if objects.present?
+  ul.list__list max-levels="#{objects.first.first.class.const_get('MAX_DEPTH')}"
+    - objects.each do |object, children|
+      li.list__item href=polymorphic_path([:admin, object], action: :drop) rel=object.id
+        = render partial: 'object', object: object
+        = render partial: 'objects', object: children

@@ -1,0 +1,16 @@
+= form_tag url_for(action: :batch_action), method: :post do
+  = block
+  .list-actions
+    - if with_publication
+      button.btn.btn-secondary.btn-sm type="submit" name="set_published_on"
+        = I18n.t('labels.admin.batch_actions.set_published_on')
+      button.btn.btn-secondary.btn-sm type="submit" name="set_published_off"
+        = I18n.t('labels.admin.batch_actions.set_published_off')
+    - if with_nav_publication
+      button.btn.btn-secondary.btn-sm type="submit" name="set_nav_published_on"
+        = I18n.t('labels.admin.batch_actions.set_nav_published_on')
+      button.btn.btn-secondary.btn-sm type="submit" name="set_nav_published_off"
+        = I18n.t('labels.admin.batch_actions.set_nav_published_off')
+    - if with_destroy
+      button.btn.btn-secondary.btn-sm type="submit" name="destroy" data-confirm="#{t('confirmations.destroy.many')}"
+        = I18n.t('labels.admin.batch_actions.destroy')

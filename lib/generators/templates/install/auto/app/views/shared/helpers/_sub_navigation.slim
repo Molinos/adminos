@@ -1,0 +1,14 @@
+- if first_level.present?
+  nav
+    ul
+      - first_level.each do |object|
+        = sub_navigation_first_level_link object,
+          second_level: second_level.present?
+      -#
+        - if second_level.present?
+          .second-level
+            .list
+              - if second_level_label.present?
+                .item.year-text= second_level_label
+              - second_level.each do |object|
+                = sub_navigation_second_level_link object

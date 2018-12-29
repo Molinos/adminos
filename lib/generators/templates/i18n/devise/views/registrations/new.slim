@@ -1,0 +1,7 @@
+#devise_page.users_form
+  = simple_form_for resource, as: resource_name, url: registration_path(resource_name) do |f|
+    = f.input :email, placeholder: 'E-mail', label: false
+    = f.input :password, placeholder: t('admin.users.labels.form.password'), label: false
+    = f.input :password_confirmation, placeholder: t('admin.users.labels.form.password_confirmation'), label: false
+    .submit= f.submit t('admin.users.labels.buttons.register'), tabindex: 3, class: bs_btn
+  = render "links"

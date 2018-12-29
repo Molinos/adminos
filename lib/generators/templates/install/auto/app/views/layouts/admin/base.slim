@@ -1,0 +1,17 @@
+= inside_layout :admin do
+
+  .page-container#container
+
+    = render 'shared/admin/sidebar'
+    = render 'shared/admin/topbar'
+
+    .content
+      .wrapper
+
+        = show_flash_alert with_close_bullet: true
+
+        = show_breadcrumbs admin: true
+
+        = content_for?(:'admin/base_layout') ? yield(:'admin/base_layout') : yield
+
+    = render 'shared/admin/footer'

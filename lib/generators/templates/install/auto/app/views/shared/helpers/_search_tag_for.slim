@@ -1,0 +1,16 @@
+- css_class = []
+- css_class << (is_light_search ? 'light-search' : 'common-search')
+.search-footer class=css_class
+  = form_tag redirect_to_kind_search_path, method: :post do
+    = hidden_field_tag :direction, sorting[:direction]
+    .form
+      .input-search
+        - css_class = ['search_all_input']
+        - css_class << (is_light_search ? 'with-light-autocomplete' : 'with-autocomplete')
+        = text_field_tag :q, query, placeholder: placeholder,
+          class: css_class, id: nil, tabindex: tabindex[:text]
+      = submit_tag t('labels.application.form.search.submit'),
+        tabindex: tabindex[:submit], name: nil
+
+  - if block.present?
+    = block

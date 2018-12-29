@@ -1,0 +1,3 @@
+<% attributes.each do |attribute| -%>
+<%= "          th= admin_sortable_column :#{attribute.name}, resource_class.human_attribute_name(:#{attribute.name})\n" if attribute.sort -%>
+<% end -%>

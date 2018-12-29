@@ -1,0 +1,22 @@
+- @body_class = "page--auth ready"
+
+.auth
+  .auth__title Adminos
+  .auth__welcome Вход в систему администрирования
+
+  = simple_form_for resource, as: resource_name, url: session_path(resource_name), wrapper: :auth, html: { class: 'form auth__form' } do |f|
+    = f.input :email, placeholder: 'Электронная почта'
+    = f.input :password, placeholder: 'Пароль'
+
+    /- if devise_mapping.rememberable?
+      = f.input :remember_me, as: :boolean, inline_label: t('admin.users.labels.form.remember_me'), label: false
+
+    .form__submit.centered
+      = f.submit 'Войти', class: 'button button--rounded'
+
+  /.auth__help
+    a href="#" Напомнить пароль
+
+  - if flash.present?
+    .auth__message
+      = show_flash_alert

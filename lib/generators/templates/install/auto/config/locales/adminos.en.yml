@@ -1,0 +1,164 @@
+en:
+  attributes:
+    name: Name
+    published: Published
+    nav_name: Navigation name
+    nav_published: Show in naviation
+    slug: URL
+    body: Body
+    lead: Short description
+    published_at: Publication date
+    created_at: Date
+    meta_title: Title
+    meta_description: Description
+    height: Height
+    area: Area
+    start: Contract starts
+    end: Contract ends
+    image: Main image
+    summary: Short description
+    description: Description
+    type: Type
+    city: City
+    country: Country
+    coordinates: Coordinates
+
+  activerecord:
+    attributes:
+      settings:
+        company_name: Company name
+        contact_email: Contact email
+        email: Email for notifications
+        email_header_from: FROM email
+        index_meta_description: Description
+        index_meta_title: Title
+        per_page: Per page
+        seo_google_analytics: Google Analytics code
+        seo_yandex_metrika: Яндекс.Метрики code
+        pr_email: Email PR
+        test_emails: Email for test mail
+      user:
+        email: E-mail
+        password: Password
+        roles: Roles
+        admin: Admin
+      paper_trail/version:
+        item: Object
+        item_type: Type
+        event: Event
+        whodunnit: User
+      project_image:
+        file: Photo
+
+  admin:
+    actions:
+      create: Create
+      update: Update
+      destroy: Destroy
+    projects:
+      actions:
+        index:
+          header: Projects
+          title: Projects
+      labels:
+        actions:
+          create: Add project
+          edit: Save project
+          new: Add project
+          update: Save project
+    users:
+      actions:
+        index:
+          header: Users
+          title: Users
+      labels:
+        actions:
+          create: Add user
+          edit: Save user
+          new: Add user
+          update: Save user
+        form:
+          login: Sign in
+          registration: Sign up
+          forgot_password: Forgot your password?
+          confirm: Didn't receive confirmation instructions?
+          oauth: Sign in with
+          remember_me: Remember me
+          password: Password
+          password_confirmation: Password confirmation
+          new_password: New password
+          new_password_confirmation: New password confirmation
+        buttons:
+          password_reset: Send me reset password instructions
+          password_edit: Change my password
+          register: Sign up
+    paper_trail/versions:
+      actions:
+        index:
+          header: Actions
+          title: Actions
+      labels:
+        actions:
+          show: Show modifications
+    settings:
+      actions:
+        index:
+          header: Settings
+      sets:
+        counters: Counters
+        index: Main page
+        contact_information: Contacts
+      labels:
+        actions:
+          create: Settings
+          edit: Save settings
+          update: Save settings
+        contact_email: E-mail
+    pages:
+      actions:
+        index:
+          header: Pages
+          title: Pages
+      labels:
+        actions:
+          create: Add page
+          edit: Save page
+          new: Add page
+          update: Save page
+
+  labels:
+    application:
+      admin: Dashboard
+    admin:
+      add: Add
+      add_child: Add child
+      back: Back
+      cancel: Cancel
+      destroy: Delete
+      edit: Edit
+      show: Show modifications
+      go_to_root: Home
+      info: Information
+      other: Other
+      legend:
+        common: Main
+        seo: SEO
+      logout: Logout
+      nav_published: Navigation
+      published: Published
+      locked: Locked
+      server_restart: Restart server
+      unpublished: Unpublished
+      batch_actions:
+        destroy: Delete
+        set_nav_published_off: Remove from navigation
+        set_nav_published_on: Add to navigation
+        set_published_off: Remove from publication
+        set_published_on: Publish
+
+  sites:
+    holding: Holding
+    construction: Construction
+
+  unauthorized:
+    default: You must login or register.

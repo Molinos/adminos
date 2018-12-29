@@ -1,0 +1,10 @@
+.f__fieldset
+  = f.input :name<%= "\n  = f.input :nav_name" if options.type == 'section' %>
+<% attributes.each do |attribute| -%>
+<%= "  = f.input :#{attribute.name}\n" if attribute.locale -%>
+<% end -%>
+
+.f__fieldset
+  .f__legend= t 'labels.admin.legend.seo'
+  = f.input :meta_title
+  = f.input :meta_description, as: :string

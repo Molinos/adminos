@@ -1,0 +1,36 @@
+doctype html
+html#no-js lang="ru"
+  head
+    meta charset="utf-8"
+
+    title= show_title || '<%= application_name.camelize %>'
+
+    meta name="viewport" content="width=1000, initial-scale=1"
+
+    = favicon_link_tag
+    = favicon_link_tag 'apple-touch-icon.png', rel: 'apple-touch-icon', sizes: '180x180'
+    = favicon_link_tag 'favicon-32x32.png', rel: 'icon', sizes: '32x32'
+    = favicon_link_tag 'favicon-16x16.png', rel: 'icon', sizes: '16x16'
+    = favicon_link_tag 'safari-pinned-tab.svg', rel: 'mask-icon', color: '#000000'
+
+    meta[name='apple-mobile-web-app-title' content='Adminos']
+    meta[name='application-name' content='Adminos']
+    meta[name='msapplication-TileColor' content='#000000']
+    meta[name='theme-color' content='#ffffff']
+
+    = stylesheet_pack_tag 'admin'
+
+    = yield :styles
+
+    javascript:
+      document.getElementById('no-js').id = 'js';
+
+    = csrf_meta_tag
+
+    = javascript_pack_tag 'vendor', rel: "prefetch"
+    = javascript_pack_tag 'admin'
+
+    = yield :javascript
+
+  body.page class="#{@body_class}"
+    = content_for?(:admin_layout) ? yield(:admin_layout) : yield

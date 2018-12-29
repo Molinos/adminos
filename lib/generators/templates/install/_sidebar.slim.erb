@@ -1,0 +1,44 @@
+.sidebar#sidebar(data-turbolinks-permanent)
+  .optiscroll.sidebar__wrapper
+    .sidebar__header
+      a.sidebar__header-title href="#{admin_root_path}"
+        = t('layouts.application.title')
+      .sidebar__header-content
+        .nav
+          .nav__item
+            a.nav__link href="#{root_path}" data-turbolinks="false"
+              span.link.link--home
+                = t('labels.admin.go_to_root')
+        .user
+          .user__name
+            = current_user.email
+          .user__role Админ
+          = link_to destroy_user_session_path, class: 'user__logout', title: t('labels.admin.logout'), method: :delete do
+
+    .sidebar__nav
+      .nav
+        .nav__section
+          / links
+          <% if @settings[:add_pages] %>= top_menu_item active: 'admin/pages#' do
+            = link_to t('admin.pages.actions.index.header'), admin_pages_path, class: 'nav__link'<% end %>
+        - if current_user.has_role? :admin
+          .nav__section
+            .nav__group
+              .nav__group-title.js-nav-group-toggle= t('labels.admin.other')
+              .nav__group-content.nav__group-content--other
+                / links
+                <% if @settings[:add_users_to_admin_panel] %>= top_menu_item active: 'admin/users#' do
+                  = link_to t('admin.users.actions.index.header'), admin_users_path, class: 'nav__link'<% end %>
+                <% if @settings[:add_versions_to_admin_panel] %>= top_menu_item active: 'admin/versions#' do
+                  = link_to t('admin.paper_trail/versions.actions.index.header'), admin_versions_path, class: 'nav__link'<% end %>
+    .sidebar__footer
+      .nav
+        = top_menu_item active: 'admin/settings#' do
+          = link_to edit_admin_settings_path, class: 'nav__link' do
+            span.link.link--settings
+              = t('admin.settings.actions.index.header')
+        /= top_menu_item active: 'admin/helps#' do
+          = link_to admin_helps_path, class: 'nav__link' do
+            span.link.link--info
+              = t('labels.admin.info')
+  .sidebar__toggle.js-sidebar-toggle

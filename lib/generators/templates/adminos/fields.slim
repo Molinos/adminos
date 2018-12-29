@@ -1,0 +1,21 @@
+.f__fieldset
+  = f.input :name
+<% if options.type == 'section' -%>
+  = f.input :nav_name
+<% end -%>
+  = f.input :slug
+  = f.input :published, wrapper: :check
+<% if options.type == 'section' -%>
+  = f.input :nav_published
+<% end -%>
+
+<% attributes.each do |attribute| -%>
+  = f.input :<%= attribute.name %>
+<% end -%>
+
+<% unless options.seo? -%>
+.f__fieldset
+  .f__legend= t 'labels.admin.legend.seo'
+  = f.input :meta_title
+  = f.input :meta_description, as: :string
+<% end -%>

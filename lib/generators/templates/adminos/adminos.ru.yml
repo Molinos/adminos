@@ -1,0 +1,15 @@
+    <%= table_name %>:
+      actions:
+        index:
+          header: <%= table_name.capitalize %>
+          title: <%= table_name.capitalize %>
+      labels:
+        actions:
+          create: Добавить <%= file_name %>
+          create_stay_in_place: Применить
+          edit: Сохранить <%= file_name %>
+          edit_stay_in_place: Применить
+          new: Добавить <%= file_name %>
+          new_stay_in_place: Применить
+          update: Сохранить <%= file_name %>
+          update_stay_in_place: Применить

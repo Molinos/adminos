@@ -1,0 +1,25 @@
+/
+  <h2>Edit <haml:loud> resource_name.to_s.humanize </haml:loud></h2>
+  
+  <haml:loud> form_for(resource, :as =&amp;gt; resource_name, :url =&amp;gt; registration_path(resource_name), :html =&amp;gt; { :method =&amp;gt; :put }) do |f| </haml:loud><haml:block>
+  <haml:loud> devise_error_messages! </haml:loud>
+  
+  <div><haml:loud> f.label :email </haml:loud><br />
+  <haml:loud> f.email_field :email, :autofocus =&amp;gt; true </haml:loud></div>
+  
+  <div><haml:loud> f.label :password </haml:loud> <i>(leave blank if you don't want to change it)</i><br />
+  <haml:loud> f.password_field :password, :autocomplete =&amp;gt; &amp;quot;off&amp;quot; </haml:loud></div>
+  
+  <div><haml:loud> f.label :password_confirmation </haml:loud><br />
+  <haml:loud> f.password_field :password_confirmation </haml:loud></div>
+  
+  <div><haml:loud> f.label :current_password </haml:loud> <i>(we need your current password to confirm your changes)</i><br />
+  <haml:loud> f.password_field :current_password </haml:loud></div>
+  
+  <div><haml:loud> f.submit &amp;quot;Update&amp;quot; </haml:loud></div>
+  </haml:block>
+  <h3>Cancel my account</h3>
+  
+  <p>Unhappy? <haml:loud> link_to &amp;quot;Cancel my account&amp;quot;, registration_path(resource_name), :data =&amp;gt; { :confirm =&amp;gt; &amp;quot;Are you sure?&amp;quot; }, :method =&amp;gt; :delete </haml:loud>.</p>
+  
+  <haml:loud> link_to &amp;quot;Back&amp;quot;, :back </haml:loud>

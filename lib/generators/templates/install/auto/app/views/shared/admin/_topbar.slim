@@ -1,0 +1,11 @@
+/- if content_for?(:topbar_button)
+.topbar
+  .wrapper
+    .topbar__actions
+      .actions
+        = yield :topbar_button
+        /.actions__item
+          a.actions__link.actions__link--import href="#" Импорт
+        /.actions__item
+          a.actions__link.actions__link--export href="#" Экспорт
+    = yield :search

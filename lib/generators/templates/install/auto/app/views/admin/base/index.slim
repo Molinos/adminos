@@ -1,0 +1,14 @@
+- collection_title
+= collection_header
+
+- if collection.present?
+
+  - list = capture do
+    = render partial: 'objects', object: collection
+
+  - if controller.respond_to?(:batch_action)
+    = batch_actions_tag publication: (collection.respond_to?(:set_each_published_on)),
+      nav_publication: (collection.respond_to?(:set_nav_published_on)) do
+      = list
+  - else
+    = list

@@ -1,0 +1,7 @@
+.bread-crumbs
+  = link_to_unless_current '', root_path, class: :home
+  - breadcrumbs.each_with_index do |breadcrumb, index|
+    - css_class = []
+    - css_class << :down if index == breadcrumbs.length - 1
+    = link_to_unless_current h(breadcrumb.label), breadcrumb.url,
+      class: (css_class if css_class.present?)

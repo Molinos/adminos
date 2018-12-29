@@ -1,0 +1,18 @@
+- resource_title
+- breadcrumbs resource_name
+
+= resource_header
+
+.table-list
+  table.table.table-hover.table-sm
+    thead
+      tr
+        th Поле
+        th Старое значение
+        th Новое значение
+    tbody
+      - resource.changeset.each do |field, change|
+        tr
+          td= field
+          td= change[0]
+          td= change[1]

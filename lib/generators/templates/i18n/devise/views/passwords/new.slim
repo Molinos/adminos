@@ -1,0 +1,5 @@
+#devise_page.users_form
+  = simple_form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :post } do |f|
+    = f.input :email, placeholder: 'E-mail', label: false
+    .submit= f.submit t('admin.users.labels.buttons.password_reset'), tabindex: 3, class: bs_btn
+  = render "links"

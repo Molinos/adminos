@@ -1,0 +1,5 @@
+= form_tag authentications_link_path, class: 'form-inline', id: 'link_auth' do
+  = email_field_tag :email, nil, placeholder: 'Email', class: 'input-medium'
+  = password_field_tag :password, nil, placeholder: 'Пароль', class: 'input-medium'
+  = submit_tag 'Привязать к аккаунту', class: 'btn'
+  .link_auth-message

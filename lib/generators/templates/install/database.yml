@@ -1,0 +1,19 @@
+staging:
+  adapter: postgresql
+  database: <%= application_name %>_staging
+
+production:
+  adapter: postgresql
+  database: <%= ENV['PGDATABASE'] %>
+  username: <%= ENV['PGUSER'] %>
+  password: <%= ENV['PGPASSWORD'] %>
+  host: <%= ENV['PGHOST'] %>
+
+development:
+  adapter: postgresql
+  database: <%= application_name %>_development
+
+test:
+  adapter: postgresql
+  database: <%= application_name %>_test
+  min_messages: warning

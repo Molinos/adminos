@@ -1,0 +1,12 @@
+= form_tag form_url, method: method,
+    class: "method-link-to inline #{css_class} #{'remote' if form_remote}",
+    title: (label unless with_link_get_method) do
+  - if confirmation.present?
+    input type="hidden" class="confirm-message" value="#{h(confirmation)}"
+  - if data.present?
+    - data.each do |name, value|
+      = hidden_field_tag name, value
+  - if with_link_get_method
+    = link_to label, form_url, options.reverse_merge(class: 'submit-form')
+  noscript
+    = submit_tag(strip_tags(label).strip)

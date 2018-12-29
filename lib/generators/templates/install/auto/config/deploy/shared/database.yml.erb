@@ -1,0 +1,10 @@
+<%= fetch(:rails_env) %>:
+  adapter: postgresql
+  timeout: 5000
+  encoding: utf8
+  reconnect: false
+  database: <%= "#{fetch(:application)}_#{fetch(:rails_env)}" %>
+  pool: 5
+  username: <%= "dbu_#{fetch(:deploy_user)}" %>
+  password:
+  host:

@@ -1,0 +1,5 @@
+- content_for :topbar_button do
+  .actions__item.actions__item--add
+    = link_to I18n.t("admin.#{collection.klass.name.underscore.pluralize}.labels.actions.new"),
+      url,
+      class: 'actions__link actions__link--add'

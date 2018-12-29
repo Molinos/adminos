@@ -1,0 +1,5 @@
+.nav__item class=(:active if action_any_of?(*active))
+  - if block.present?
+    = block
+  - else
+    = h value

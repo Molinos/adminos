@@ -1,0 +1,8 @@
+#devise_page
+  h2 Отправить инструкции по подтверждению аккаунта
+  = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
+    div
+      = f.label :email
+      = f.email_field :email
+    div= f.submit "Отправить"
+  = render "links"

@@ -1,0 +1,6 @@
+- content_for :search do
+  .topbar__search
+    .search
+      = form_tag nil, method: :get do
+        = text_field_tag :query, params[:query], type: 'search', class: 'form-control', placeholder: t('labels.admin.search')
+        /= submit_tag 'Поиск', name: nil
