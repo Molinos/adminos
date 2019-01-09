@@ -1,6 +1,6 @@
 Gem::Specification.new do |gem|
   gem.name          = 'adminos'
-  gem.version       = '1.0.0-rc.1'
+  gem.version       = '1.0.1-rc.1'
   gem.authors       = ['RavWar', 'milushov', 'abuhtoyarov', 'SiebenSieben']
   gem.email         = ['studio@molinos.ru']
   gem.homepage      = 'https://gitlab.molinos.ru/global/adminos'
