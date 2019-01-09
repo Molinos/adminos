@@ -90,6 +90,7 @@ module Adminos::Generators
 
     def install_actiontext
       run 'bundle exec rails action_text:install'
+      run 'yarn add https://github.com/rails/actiontext#cfe4674d3637c746cdb3c2b5131e2de498775529'
     end
 
     def install_devise
