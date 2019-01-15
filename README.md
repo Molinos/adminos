@@ -60,7 +60,11 @@ If no need in SEO fields, switch it off using `--no-seo`.
       has_one_attached :avatar
       has_one_attached :photo
 
-      cropped :avatar
+      cropped :avatar, version: :default, coord_attribute: :avatar_coord 
+      cropped :avatar, version: :mobile, coord_attribute: :avatar_mobile_coord
+
+      # default versions name is :default
+      # default coord_attribute attribute name is has_one_attached attribute + '_coord'
       cropped :photo
     end
   ```
@@ -68,7 +72,8 @@ If no need in SEO fields, switch it off using `--no-seo`.
   ```slim
     # admin
     # aspect_ratio default 16/9
-    = f.input :avatar, as: :cropp, input_html: { aspect_ratio: 2/3 }
+    = f.input :avatar, as: :cropp, input_html: { coord_attribute: :avatar_coord, version: :default, aspect_ratio: 16/9 }
+    = f.input :avatar, as: :cropp, input_html: { coord_attribute: :avatar_mobile_coord, version: :mobile, aspect_ratio: 2/3 }
     = f.input :photo, as: :cropp
 
     # public
