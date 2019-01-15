@@ -76,7 +76,6 @@ module Adminos::Generators
 
     def install_webpacker
       run 'bundle exec rails webpacker:install'
-      run "yarn add resolve-url-loader adminos"
 
       copy_file 'webpack/javascript/packs/admin.js', 'app/javascript/packs/admin.js'
       directory 'webpack/javascript/admin', 'app/javascript/admin'
@@ -88,8 +87,12 @@ module Adminos::Generators
     end
 
     def install_actiontext
-      run 'bundle exec rails action_text:install'
-      run 'yarn add https://github.com/rails/actiontext#cfe4674d3637c746cdb3c2b5131e2de498775529'
+      # Assets are stored in adminos-assets
+      run 'bundle exec rails action_text:copy_migrations'
+    end
+
+    def install_adminos_assets
+      run "yarn add adminos"
     end
 
     def install_devise
