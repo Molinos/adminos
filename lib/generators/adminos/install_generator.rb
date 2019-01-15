@@ -78,7 +78,6 @@ module Adminos::Generators
       run 'bundle exec rails webpacker:install'
       run "yarn add resolve-url-loader adminos"
 
-      copy_file 'webpack/custom.js', 'config/webpack/custom.js'
       copy_file 'webpack/javascript/packs/admin.js', 'app/javascript/packs/admin.js'
       directory 'webpack/javascript/admin', 'app/javascript/admin'
       inject_into_file 'config/webpack/environment.js', file_content('webpack/environment.js'), before: /\nmodule.exports/
