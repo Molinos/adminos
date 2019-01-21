@@ -87,6 +87,10 @@ module Adminos::Controllers::Resource
               resource_class
             end
 
+          if params[:query].present?
+            collection = collection.base_search(params[:query])
+          end
+
           @collection =
             if collection_scope.is_a?(Array)
               collection_scope.inject(collection) do |collection, method|
