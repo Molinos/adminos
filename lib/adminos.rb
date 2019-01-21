@@ -6,16 +6,32 @@ require 'babosa'
 require 'devise'
 require 'cancancan'
 require 'cocoon'
-require 'simple_form'
 
 module Adminos
 
   autoload :FormBuilder,              'adminos/form_builder'
 
+  class << self
+    attr_writer :configuration
+  end
+
+  def self.configuration
+    @configuration ||= Configuration.new
+  end
+
+  def self.reset
+    @configuration = Configuration.new
+  end
+
+  def self.configure
+    yield(configuration)
+  end
+
   Helpers      = Module.new
   NestedSet    = Module.new
   Controllers  = Module.new
   StatefulLink = Module.new
+
 
   Path.require_tree 'adminos', except: %w[generators operations]
 
