@@ -5,6 +5,7 @@ require 'dotenv-rails'
 require 'babosa'
 require 'devise'
 require 'cancancan'
+require 'pg_search'
 require 'cocoon'
 require 'simple_form'
 
