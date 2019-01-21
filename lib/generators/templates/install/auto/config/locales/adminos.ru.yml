@@ -247,6 +247,10 @@ ru:
       labels:
         actions:
           show: Просмотр изменений
+    profile:
+      actions:
+        index:
+          header: Мой профиль
     settings:
       actions:
         index:
