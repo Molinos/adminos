@@ -1,0 +1,17 @@
+- title 'Профиль'
+= resource_header 'Профиль'
+
+= simple_form_for [:admin, resource], url: admin_profile_path, wrapper: :admin, html: { method: :put } do |f|
+  .f
+    .f__wrapper
+      .f__fieldset
+        = f.input :email
+        = f.input :password, hint: 'Оставьте пустым если не хотите изменить'
+        = f.input :password_confirmation, hint: 'Повторите пароль'
+        = f.input :current_password, hint: 'Введите текущий пароль'
+
+  .f
+    .f__wrapper
+      .f-submit.f-submit--fixed
+        .wrapper
+          = f.button :submit, resource_button_value_main, class: 'btn btn-primary btn--done'
