@@ -6,6 +6,7 @@ require 'babosa'
 require 'devise'
 require 'cancancan'
 require 'pg_search'
+require 'searchkick'
 require 'cocoon'
 require 'simple_form'
 
