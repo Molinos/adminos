@@ -4,11 +4,9 @@ module Adminos
       extend ActiveSupport::Concern
 
       included do
-        def self.setup_search(*args)
-          include ::PgSearch
+        include ::PgSearch
 
-          pg_search_scope :base_search, against: search_fields, associated_against: associated_fields
-        end
+        pg_search_scope :search_by, against: search_fields, associated_against: associated_fields
       end
 
       class_methods do
@@ -17,7 +15,9 @@ module Adminos
         end
 
         def associated_fields
-          associated_against.merge(actiontext_attributes)
+          data = associated_against
+          data.merge!(actiontext_attributes)
+          data
         end
 
         def associated_against
@@ -33,7 +33,7 @@ module Adminos
           rich_text_attributes = reflect_has_one.map(&:name).map { |name| name if name.to_s.include?('rich_text_') }.compact
 
           rich_text_attributes.inject({}) do |memo, attr|
-            memo[attr] = [attr.to_s.gsub('rich_text_', '')]
+            memo[attr] = [:body]
             memo
           end
         end
