@@ -88,7 +88,7 @@ module Adminos::Controllers::Resource
             end
 
           if params[:query].present?
-            collection = collection.base_search(params[:query])
+            collection = collection.search_by(params[:query])
           end
 
           @collection =
