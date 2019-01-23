@@ -19,10 +19,13 @@ module Adminos::Generators
 
     def sidebar_link
       insert_into_file "app/views/shared/admin/_sidebar.slim", before: "\n        = top_menu_item active: 'admin/settings#' do" do
-        "\n        = top_menu_item active: 'admin/profiles#' do
-          = link_to edit_admin_profile_path, class: 'nav__link' do
-            span.link.link--settings
-              = t('admin.profile.actions.index.header')\n"
+        <<~SLIM.indent(8)
+
+          = top_menu_item active: 'admin/profiles#' do
+            = link_to edit_admin_profile_path, class: 'nav__link' do
+              span.link.link--settings
+                = t('admin.profile.actions.index.header')
+        SLIM
       end
     end
   end
