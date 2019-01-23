@@ -12,8 +12,10 @@ module Adminos::Generators
     end
 
     def route
-      insert_into_file "config/routes.rb", after: "resource  :settings, only: [:edit, :update]" do
-        "\n      resource  :profile, only: [:edit, :update]"
+      insert_into_file "config/routes.rb", after: "resource  :settings, only: [:edit, :update]\n" do
+        <<~ROUT.indent(6)
+          resource  :profile, only: [:edit, :update]
+        ROUT
       end
     end
 
