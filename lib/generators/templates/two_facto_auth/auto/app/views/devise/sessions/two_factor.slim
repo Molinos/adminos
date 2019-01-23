@@ -1,0 +1,15 @@
+- @body_class = "page--auth ready"
+
+.auth
+  .auth__title Adminos
+  .auth__welcome Вход в систему администрирования
+
+  = simple_form_for resource, as: resource_name, url: session_path(resource_name), wrapper: :auth, html: { class: 'form auth__form' } do |f|
+    = f.input :otp_attempt, placeholder: '2FA'
+
+    .form__submit.centered
+      = f.submit 'Войти', class: 'button button--rounded'
+
+  - if flash.present?
+    .auth__message
+      = show_flash_alert
