@@ -22,7 +22,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'babosa'
   gem.add_dependency 'simple_form'
   gem.add_dependency 'kaminari'
-  gem.add_dependency 'russian'
   gem.add_dependency 'devise'
   gem.add_dependency 'cancancan'
   gem.add_dependency 'cocoon'
