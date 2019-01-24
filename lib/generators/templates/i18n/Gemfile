@@ -1,3 +1,4 @@
 gem 'globalize'
 gem 'devise-i18n'
 gem 'kaminari-i18n'
+gem 'tolk'
