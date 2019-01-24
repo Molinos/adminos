@@ -67,6 +67,10 @@ module Adminos::Generators
       directory 'auto', '.'
     end
 
+    def setup_tolk
+      rake 'tolk:setup'
+    end
+
     private
 
     def available_locales
