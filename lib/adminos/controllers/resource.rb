@@ -19,7 +19,7 @@ module Adminos::Controllers::Resource
         with_move_to = options.delete(:with_move_to)
         with_apply_sortable_order = options.delete(:with_apply_sortable_order)
 
-        helper_method :resource, :collection, :resource_class, :resource_params
+        helper_method :resource, :collection, :resource_class, :resource_params, :filter
         helper_method(:parent_resource) if with_parent_resource
 
         define_method :create do
@@ -87,9 +87,7 @@ module Adminos::Controllers::Resource
               resource_class
             end
 
-          if params[:query].present?
-            collection = collection.search_by(params[:query])
-          end
+          collection = collection.search_by(params[:query]) if params[:query].present?
 
           @collection =
             if collection_scope.is_a?(Array)
@@ -99,10 +97,17 @@ module Adminos::Controllers::Resource
             else
               collection.send(collection_scope)
             end
+
+          @collection = @collection.ransack(params[:q]).result if params[:q].present?
+          @collection
         end
 
         define_method :build_resource do
           self.resource_class_scope.new(parameters)
+        end
+
+        define_method :filter do
+          @collection.ransack(params[:q])
         end
 
         define_method :parameters do

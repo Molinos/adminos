@@ -6,7 +6,9 @@ module Adminos
       included do
         include ::PgSearch
 
-        pg_search_scope :search_by, against: search_fields, associated_against: associated_fields
+        pg_search_scope :search_by, against: :email, using: {
+          tsearch: { any_word: true, prefix: true }
+        }
       end
 
       class_methods do

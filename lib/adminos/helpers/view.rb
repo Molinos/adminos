@@ -4,6 +4,36 @@ module Adminos::Helpers::View
     simple_form_for(object, *(args << options.merge(builder: Adminos::FormBuilder)), &block)
   end
 
+  # Helper method to render a filter form
+  def adminos_filters_form_for(filters, options = {})
+    return if filters.blank?
+
+    defaults = {
+      builder: Adminos::Filters::FormBuilder,
+      method: :get,
+      url: polymorphic_path([:admin, resource_class]),
+      html: { class: 'form-inline filter-form' }
+    }
+
+    form_for resource_class.ransack(params[:q]), defaults do |f|
+
+      filters.each do |attribute, opts|
+        opts.merge!(input_html: {
+          class: 'filter_row form-control'
+        })
+
+        f.filter attribute.to_sym, opts
+      end
+
+      buttons = content_tag :div, class: "buttons" do
+        f.submit('Filter', class: 'btn btn-primary') +
+          link_to('Clear', request.path, class: 'clear_filters_btn btn btn-secondary')
+      end
+
+      f.template.concat buttons
+    end
+  end
+
   def inside_layout(l, &block)
     content_for("#{l}_layout".to_sym, capture(&block))
     render(template: "layouts/#{l}")

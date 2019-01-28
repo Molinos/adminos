@@ -7,6 +7,7 @@ require 'devise'
 require 'cancancan'
 require 'pg_search'
 require 'searchkick'
+require 'ransack'
 require 'cocoon'
 require 'simple_form'
 
@@ -48,6 +49,7 @@ module Adminos
     initializer 'adminos.controller_helpers' do
       ActionController::Base.send :include, Controllers::Helpers
       ActionController::Base.send :include, Controllers::Resource
+      ActionController::Base.send :include, Controllers::Filters
     end
 
     initializer 'adminos.stateful_link' do
