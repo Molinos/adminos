@@ -4,7 +4,9 @@
 <%= "  = f.input :#{attribute.name}\n" if attribute.locale -%>
 <% end -%>
 
+<% if options.seo? -%>
 .f__fieldset
   .f__legend= t 'labels.admin.legend.seo'
   = f.input :meta_title
   = f.input :meta_description, as: :string
+<% end -%>
