@@ -1,7 +1,7 @@
 require "capistrano/smart_templates"
 
 namespace :deploy do
-  desc "Set up config fi"
+  desc "Set up config files"
   task :setup_config do
     on roles(:app) do
       # make the config dir
