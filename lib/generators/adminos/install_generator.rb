@@ -92,7 +92,7 @@ module Adminos::Generators
     end
 
     def run_binstubs
-      run 'bundle binstubs puma rspec-core # sidekiq'
+      run 'bundle binstubs puma'
     end
 
     def install_adminos_assets
