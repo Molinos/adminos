@@ -91,6 +91,10 @@ module Adminos::Generators
       run 'bundle exec rails action_text:copy_migrations'
     end
 
+    def run_binstubs
+      run 'bundle binstubs puma rspec-core # sidekiq'
+    end
+
     def install_adminos_assets
       run "yarn add adminos"
     end

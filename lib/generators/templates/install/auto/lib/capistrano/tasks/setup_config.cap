@@ -1,9 +1,11 @@
+require "capistrano/smart_templates"
+
 namespace :deploy do
+  desc "Set up config fi"
   task :setup_config do
     on roles(:app) do
       # make the config dir
       execute :mkdir, "-p #{shared_path}/config"
-      full_app_name = fetch(:full_app_name)
 
       # config files to be uploaded to shared/config, see the
       # definition of smart_template for details of operation.
@@ -12,28 +14,33 @@ namespace :deploy do
       # everything should be in deploy/shared with params which differ
       # set in the stage files
 
-      begin
-        config_files = fetch(:config_files)
-        config_files.each do |file|
-          smart_template file
-        end
+      config_files = fetch(:config_files, [])
+      config_files.each do |file|
+        smart_template file
+      end
 
-        # which of the above files should be marked as executable
-        executable_files = fetch(:executable_config_files)
+      # which of the above files should be marked as executable
+      executable_config_files = fetch(:executable_config_files, [])
+      executable_config_files.each do |file|
+        execute :chmod, "+x #{shared_path}/config/#{file}"
+      end
 
-        #executable_files.each do |file|
-        #  execute :chmod, "+x #{shared_path}/config/#{file}"
-        #end
-
-        # symlink stuff which should be... symlinked
-        symlinks = fetch(:symlinks)
-
-        symlinks.each do |symlink|
-          sudo "ln -nfs #{shared_path}/config/#{symlink[:source]} #{sub_strings(symlink[:link])}"
-        end
-      rescue Exception => e
-        log "ERROR: #{e.to_s}"
+      # symlink stuff which should be... symlinked
+      symlinks = fetch(:symlinks, [])
+      symlinks.each do |symlink|
+        sudo "ln -nfs #{shared_path}/config/#{symlink[:source]} #{sub_strings(symlink[:link])}"
       end
     end
   end
+
+  desc "Set up new deployment"
+  task setup: %i[setup_config puma:nginx_config]
+
+  desc "Set up Systemd services"
+  task setup_systemd: %i[systemd:puma:setup]
+  # task setup_systemd: %i[systemd:puma:setup systemd:sidekiq:setup]
+
+  desc "Enable Systemd services"
+  task enable_systemd: %i[systemd:puma:enable]
+  # task enable_systemd: %i[systemd:puma:enable systemd:sidekiq:enable]
 end
