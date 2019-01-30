@@ -1,5 +1,4 @@
 require 'path'
-require 'awesome_nested_set'
 require 'rails'
 require 'jquery-fileupload-rails'
 require 'dotenv-rails'
