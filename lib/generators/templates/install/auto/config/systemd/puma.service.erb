@@ -7,9 +7,9 @@ Type = simple
 Environment = RAILS_ENV=<%= fetch(:rails_env) %>
 Environment = PWD=<%= current_path %>
 WorkingDirectory = <%= current_path %>
-ExecStart = <%= fetch(:user_home_dir) %>/.rvm/bin/rvm <%= fetch(:rvm_ruby_version) %> do <%= current_path %>/bin/puma -S <%= shared_path %>/tmp/pids/puma.state -C <%= shared_path %>/puma.rb
-ExecStop = <%= fetch(:user_home_dir) %>/.rvm/bin/rvm <%= fetch(:rvm_ruby_version) %> do <%= current_path %>/bin/pumactl -S <%= shared_path %>/tmp/pids/puma.state -F <%= shared_path %>/puma.rb stop
-ExecReload = <%= fetch(:user_home_dir) %>/.rvm/bin/rvm <%= fetch(:rvm_ruby_version) %> do <%= current_path %>/bin/pumactl -S <%= shared_path %>/tmp/pids/puma.state -F <%= shared_path %>/puma.rb phased-restart
+ExecStart = /home/<%= fetch(:user)} %>/.rvm/bin/rvm <%= fetch(:rvm_ruby_version) %> do <%= current_path %>/bin/puma -S <%= shared_path %>/tmp/pids/puma.state -C <%= shared_path %>/puma.rb
+ExecStop = /home/<%= fetch(:user)} %>/.rvm/bin/rvm <%= fetch(:rvm_ruby_version) %> do <%= current_path %>/bin/pumactl -S <%= shared_path %>/tmp/pids/puma.state -F <%= shared_path %>/puma.rb stop
+ExecReload = /home/<%= fetch(:user)} %>/.rvm/bin/rvm <%= fetch(:rvm_ruby_version) %> do <%= current_path %>/bin/pumactl -S <%= shared_path %>/tmp/pids/puma.state -F <%= shared_path %>/puma.rb phased-restart
 User = <%= fetch(:user) %>
 Group = <%= fetch(:group) || fetch(:user) %>
 Restart = always

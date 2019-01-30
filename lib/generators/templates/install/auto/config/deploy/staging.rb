@@ -6,8 +6,7 @@ set :rails_env, 'staging'
 set :branch, :develop
 
 set :user, :app
-set :user_home_dir, "/home/#{fetch(:user)}"
-set :deploy_to, "#{fetch(:user_home_dir)}/#{fetch(:application)}"
+set :deploy_to, "/home/#{fetch(:user)}/#{fetch(:application)}"
 
 # CentOS
 set :nginx_sites_available_path, "#{fetch(:deploy_to)}/shared"
