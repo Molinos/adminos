@@ -168,6 +168,11 @@ RSpec.describe Adminos::Generators::InstallGenerator, type: :generator do
         it { is_expected.to exist }
       end
 
+      describe 'config/initializers/adminos.rb' do
+        subject { file( 'config/initializers/adminos.rb') }
+        it { is_expected.to exist }
+      end
+
       describe 'config/locales/devise.ru.yml' do
         subject { file( 'config/locales/devise.ru.yml') }
         it { is_expected.to exist }
