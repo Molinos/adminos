@@ -5,6 +5,6 @@
   reconnect: false
   database: <%= "#{fetch(:application)}_#{fetch(:rails_env)}" %>
   pool: 5
-  username: <%= "dbu_#{fetch(:deploy_user)}" %>
+  username: <%= "dbu_#{fetch(:user)}" %>
   password:
   host:

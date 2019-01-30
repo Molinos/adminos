@@ -10,17 +10,14 @@ gem 'webpacker', '~> 3.5'
 gem "actiontext", github: "rails/actiontext", require: "action_text", ref: "cfe4674d3637c746cdb3c2b5131e2de498775529"
 gem "image_processing", "~> 1.2" # for Active Storage variants
 
-group :production, :staging do
-  gem 'unicorn'
-end
-
 group :development do
   # gem 'spring'
   gem 'capistrano', require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rails', require: false
   gem 'capistrano-rvm', require: false
-  gem 'capistrano3-unicorn', require: false
+  gem 'capistrano3-puma'
+  gem 'capistrano-systemd-multiservice', '~> 0.1.0.beta6', require: false
 
   gem 'guard'
   gem 'guard-livereload', '~> 2.5', require: false

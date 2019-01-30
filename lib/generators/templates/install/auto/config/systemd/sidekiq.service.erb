@@ -1,0 +1,21 @@
+[Unit]
+Description = <%= fetch(:application) %> Sidekiq Background Worker
+After = multi-user.target
+
+[Service]
+Type = simple
+Environment = RAILS_ENV=<%= fetch(:rails_env) %>
+Environment = PWD=<%= current_path %>
+EnvironmentFile=/etc/environment
+WorkingDirectory = <%= current_path %>
+ExecStart = <%= fetch(:user_home_dir) %>/.rvm/bin/rvm <%= fetch(:rvm_ruby_version) %> do <%= current_path %>/bin/sidekiq -e <%= fetch(:rails_env) %> -L <%= shared_path %>/log/sidekiq.log -P <%= shared_path %>/tmp/pids/sidekiq.pid
+ExecStop = <%= fetch(:user_home_dir) %>/.rvm/bin/rvm <%= fetch(:rvm_ruby_version) %> do <%= current_path %>/bin/sidekiqctl stop <%= shared_path %>/tmp/pids/sidekiq.pid
+User = <%= fetch(:user) %>
+Group = <%= fetch(:group) || fetch(:user) %>
+KillMode = process
+UMask = 0002
+RestartSec = 1
+Restart = always
+
+[Install]
+WantedBy = multi-user.target
