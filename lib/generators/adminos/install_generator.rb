@@ -53,6 +53,10 @@ module Adminos::Generators
       append_file 'db/seeds.rb', file_content('prepare_settings.rb')
     end
 
+    def readme
+      append_file 'README.md', file_content('README.md')
+    end
+
     def templates
       template 'deploy.rb.erb', 'config/deploy.rb'
       template 'database.yml', 'config/database.yml'
