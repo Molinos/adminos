@@ -12,3 +12,7 @@ set :deploy_to, "#{fetch(:user_home_dir)}/#{fetch(:application)}"
 # CentOS
 set :nginx_sites_available_path, "#{fetch(:deploy_to)}/shared"
 set :nginx_sites_enabled_path, '/etc/nginx/conf.d'
+
+# Ubuntu
+# set :nginx_sites_available_path, "/etc/nginx/sites-available"
+# set :nginx_sites_enabled_path, "/etc/nginx/sites-enabled"
