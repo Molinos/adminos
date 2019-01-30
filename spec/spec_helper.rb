@@ -13,6 +13,7 @@ require 'generators/adminos/ci_generator'
 require 'generators/adminos/install_generator'
 require 'generators/adminos/profile_generator'
 require 'generators/adminos/two_factor_auth_generator'
+require 'generators/adminos/search_generator'
 
 require 'adminos/helpers/models/flag_attrs'
 require 'adminos/helpers/models/array_attrs'

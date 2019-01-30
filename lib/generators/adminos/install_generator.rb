@@ -16,6 +16,7 @@ module Adminos::Generators
     class_option :locales, type: :string
     class_option :is_test, type: :boolean, default: false
     class_option :ci, type: :boolean, default: true, desc: 'Set up Gitlab CI'
+    class_option :search, type: :string, default: 'pg_search', desc: 'Set up Search'
 
     def questions
       @settings = {}
@@ -101,6 +102,15 @@ module Adminos::Generators
 
     def install_adminos_assets
       run "yarn add adminos"
+    end
+
+    def setup_search
+      case options[:search]
+      when 'elastic'
+        gsub_file 'config/initializers/adminos.rb', /config.search_engine.+/ do
+          'config.search_engine = Adminos::Search::Elastic'
+        end
+      end
     end
 
     def install_devise
