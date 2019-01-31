@@ -1,1 +1,1 @@
-gem "devise-two-factor"
+gem 'devise-two-factor'

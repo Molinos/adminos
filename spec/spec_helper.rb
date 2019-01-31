@@ -11,6 +11,8 @@ require 'generators/adminos/i18n_generator'
 require 'generators/adminos/adminos_generator'
 require 'generators/adminos/ci_generator'
 require 'generators/adminos/install_generator'
+require 'generators/adminos/profile_generator'
+require 'generators/adminos/two_factor_auth_generator'
 
 require 'adminos/helpers/models/flag_attrs'
 require 'adminos/helpers/models/array_attrs'
