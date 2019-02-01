@@ -13,8 +13,6 @@ class CreatePages < ActiveRecord::Migration[5.1]
       t.string   :name
       t.string   :nav_name
       t.text     :body
-      t.text     :meta_description
-      t.string   :meta_title
 
       t.timestamps
     end

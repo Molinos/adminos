@@ -139,6 +139,10 @@ module Adminos::Generators
       generate 'paper_trail:install', '--with-changes'
     end
 
+    def install_active_seo
+      generate 'active_seo:install'
+    end
+
     def add_pages
       return unless @settings[:add_pages]
       migration_template 'add_pages/pages_migration.rb', 'db/migrate/create_pages.rb'

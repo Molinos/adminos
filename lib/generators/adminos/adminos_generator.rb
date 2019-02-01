@@ -18,6 +18,15 @@ module Adminos::Generators
       model = "app/models/#{file_name}.rb"
       if File.exist?(model)
         inject_into_file model, file_content('model_includes.rb', true), after: /ApplicationRecord\n/
+
+        if options.seo?
+          inject_into_file model, after: /ApplicationRecord\n/ do
+            <<~MODEL.indent(2)
+              include ActiveSeo::Meta
+            MODEL
+          end
+        end
+
         inject_into_file model, erb_file_content('model.rb', true), before: /^\Snd\n/
       end
     end
@@ -31,10 +40,6 @@ module Adminos::Generators
 
       if drag_type?
         inject_into_file file, "\n\n    add_index :#{table_name}, :parent_id\n    add_index :#{table_name}, :rgt", after: /    end/
-      end
-
-      unless options.seo?
-        gsub_file(file, /^.+(:meta_description|:meta_title)$/, '')
       end
     end
 
