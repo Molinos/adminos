@@ -51,6 +51,18 @@ If no need in SEO fields, switch it off using `--no-seo`.
     $ rails g adminos Model --no-seo
 
 ## Features
+  ### Search
+
+  By default, search is enabled only on user models.
+  
+  To add a search, run the following generator.
+
+  ```
+  rails generate adminos:search ModelName
+  ```
+
+  You can use search engines such as ElasticSearch or PgSearch. By default, PgSearch is used if you did not specify the --search = elastic flag when installing adminos.
+
   ### Cropped 
   model
   ```ruby
