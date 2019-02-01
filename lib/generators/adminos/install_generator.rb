@@ -110,6 +110,8 @@ module Adminos::Generators
         gsub_file 'config/initializers/adminos.rb', /config.search_engine.+/ do
           'config.search_engine = Adminos::Search::Elastic'
         end
+
+        inject_into_file 'Gemfile',  "gem 'searchkick'\n", after: /gem 'adminos'.+\n/
       end
     end
 
