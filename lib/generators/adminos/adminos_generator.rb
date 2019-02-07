@@ -26,6 +26,7 @@ module Adminos::Generators
       file = Dir.glob('db/migrate/*.rb').grep(/\d+_create_#{table_name}.rb$/).first
 
       return unless file
+
       inject_into_file file, file_content('migration.rb', true), after: /create_table.*\n/
 
       if drag_type?
@@ -62,6 +63,10 @@ module Adminos::Generators
     def locale_specific_actions
       return unless options.locale? || attributes.map(&:locale).any?
 
+      file = Dir.glob('db/migrate/*.rb').grep(/\d+_create_#{table_name}.rb$/).first
+      locale_attributes = attributes.map { |attr| attr.name if attr.locale }.compact
+      locale_attributes += %w(name nav_name meta_description meta_title)
+
       template 'locales/locale_fields.slim', "app/views/admin/#{table_name}/_locale_fields.slim"
       template 'locales/general_fields.slim', "app/views/admin/#{table_name}/_general_fields.slim" #unless attributes.map(&:locale).delete_if{|e| e == true}.blank?
       remove_file "app/views/admin/#{table_name}/_fields.slim"
@@ -69,17 +74,15 @@ module Adminos::Generators
       if File.exist?("app/models/#{file_name}.rb")
         inject_into_file "app/models/#{file_name}.rb", erb_file_content('locales/model.rb.erb'), before: /^\Snd\n/
       end
+
+      locale_attributes.each do |f|
+        gsub_file(file, /(t.string|t.text).+:(#{f})/, "t.jsonb    :#{f}")
+      end
+
       comment_lines "app/models/#{file_name}.rb", /validates :name/
 
       if File.exist?("app/controllers/admin/#{table_name}_controller.rb")
         inject_into_file "app/controllers/admin/#{table_name}_controller.rb", "            filter_by_locale: true,\n", before: /.*find_by_slug.*\n/
-      end
-
-      migration_template 'locales/migration.rb.erb', "db/migrate/add_translation_table_to_#{file_name}.rb"
-
-      unless options.seo?
-        file = Dir.glob('db/migrate/*.rb').grep(/\d+_add_translation_table_to_#{file_name}.rb$/).first
-        gsub_file(file, /.+(meta_description|meta_title).+/, '')
       end
     end
 

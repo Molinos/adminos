@@ -53,11 +53,19 @@ module Adminos::Generators
 
     def localize_pages
       return unless options.pages?
+      file = Dir.glob('db/migrate/*.rb').grep(/\d+_create_pages.rb$/).first
+      model = 'app/models/page.rb'
 
-      migration_template 'add_translation_table_to_page.rb', 'db/migrate/add_translation_table_to_page.rb'
-      inject_into_file 'app/models/page.rb', file_content('page.rb'), before: /.*BEHAVIORS = .*/
-      comment_lines 'app/models/page.rb', /validates :name/
-      inject_into_file 'app/models/page.rb', ', :translations_attributes', after: /.*:parent_id, :published/
+      %w(name nav_name body meta_description meta_title).each do |f|
+        gsub_file(file, /(t.string|t.text).+:#{f}/, "t.jsonb    :#{f}")
+      end
+
+      inject_into_file model, file_content('page.rb'), before: /.*BEHAVIORS = .*/
+
+      gsub_file(model, 'has_rich_text :content', 'I18n.available_locales.each { |locale| has_rich_text(:"content_#{locale}") }')
+
+      comment_lines model, /validates :name/
+      inject_into_file model, ', :translations_attributes', after: /.*:parent_id, :published/
       inject_into_file 'app/controllers/admin/pages_controller.rb', "            filter_by_locale: true,\n", after: /.*[:sorted],\n/
       inject_into_file 'app/controllers/application_controller.rb', "  before_action :check_page_name_locale, unless: -> { controller_path.split('/').first == 'admin' }", after: /.*before_action.*\n/
       remove_file 'app/views/admin/pages/_fields.slim'

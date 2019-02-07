@@ -1,6 +1,5 @@
+  extend Mobility
 
-  translates :name, <%= attributes.map{|a| ":#{a.name}" }.compact.join(', ') %>
-
-  accepts_nested_attributes_for :translations
+  translates :name, <%= attributes.map{|a| ":#{a.name}" }.compact.join(', ') %>, locale_accessors: true
 
   validates_with LocaleValidator

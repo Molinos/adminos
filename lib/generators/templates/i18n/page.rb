@@ -1,5 +1,5 @@
-  translates :name, :nav_name, :body, :meta_description, :meta_title
+  extend Mobility
 
-  accepts_nested_attributes_for :translations
+  translates :name, :nav_name, :body, :meta_description, :meta_title, locale_accessors: true
 
   validates_with LocaleValidator

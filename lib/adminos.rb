@@ -6,8 +6,12 @@ require 'babosa'
 require 'devise'
 require 'cancancan'
 require 'cocoon'
+require 'simple_form'
 
 module Adminos
+
+  autoload :FormBuilder,              'adminos/form_builder'
+
   Helpers      = Module.new
   NestedSet    = Module.new
   Controllers  = Module.new
@@ -37,5 +41,3 @@ module Adminos
     end
   end
 end
-
-require 'adminos/extensions/nested_set'

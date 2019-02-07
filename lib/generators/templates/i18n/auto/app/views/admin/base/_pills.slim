@@ -12,8 +12,4 @@ ul.nav.nav-tabs.with-togglable-navigation
 .tab-content
   - I18n.available_locales.each_with_index do |locale, i|
     .tab-pane id="pill_#{locale}" class=('active' if locale == :ru)
-      - if locale == I18n.default_locale
-        = render 'locale_fields', locale: locale, f: f
-      - else
-        = f.globalize_fields_for locale, wrapper: :admin do |g|
-          = render 'locale_fields', locale: locale, f: g
+      = render 'locale_fields', locale: locale, f: f

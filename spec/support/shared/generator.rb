@@ -21,7 +21,7 @@ shared_examples 'Gemfile' do
     subject { file('Gemfile') }
 
     it { is_expected.to exist }
-    it { is_expected.to contain(/gem 'globalize'/) }
+    it { is_expected.to contain(/gem 'mobility'/) }
   end
 end
 

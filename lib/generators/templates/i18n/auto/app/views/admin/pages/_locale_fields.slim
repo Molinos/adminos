@@ -1,13 +1,13 @@
 .f__fieldset
-  = f.input :name
-  = f.input :nav_name
+  = f.input :name, locale: locale
+  = f.input :nav_name, locale: locale
 
-  = f.rich_text_area :content
+  = f.rich_text_area "content_#{locale}"
   / = f.input :body
   /.kaya-please
     = f.input_field :body, as: :text, id: 'kaya-editor', value: f.object.read_attribute(:body)
 
 .f__fieldset
   .f__legend= t 'labels.admin.legend.seo'
-  = f.input :meta_title
-  = f.input :meta_description, as: :string
+  = f.input :meta_title, locale: locale
+  = f.input :meta_description, as: :string, locale: locale

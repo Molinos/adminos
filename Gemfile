@@ -18,7 +18,6 @@ group :development do
 end
 
 gem 'guard-minitest', '~> 2.4'
-gem 'globalize'
 gem 'friendly_id'
 gem 'activerecord-nulldb-adapter', git: 'git://github.com/nulldb/nulldb.git'
 gem 'sqlite3', '~> 1.3.6'

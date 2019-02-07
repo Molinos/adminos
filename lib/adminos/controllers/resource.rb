@@ -80,7 +80,9 @@ module Adminos::Controllers::Resource
             if with_parent_resource
               parent_resource.send(self.resource_as_association)
             elsif filter_by_locale
-              resource_class.with_translations(I18n.locale)
+              Mobility.with_locale(I18n.locale) do
+                resource_class
+              end
             else
               resource_class
             end
@@ -121,17 +123,13 @@ module Adminos::Controllers::Resource
 
           _attribute_names = self.resource_class_scope.attribute_names + ids_attributes + rich_text_attributes
 
-          if params[resource_params][:translations_attributes]
-            _translated_attributes = resource_class.translated_attribute_names
-            attrs = _attribute_names + _translated_attributes
-            attrs.push(translations_attributes: _translated_attributes + [:id, :locale]) unless _translated_attributes.blank?
-
-            result = params.require(resource_params).permit(attrs)
-          else
-            result = params.require(resource_params).permit(*_attribute_names)
+          if resource_class.respond_to?(:translated_attribute_names)
+            _attribute_names += resource_class.translated_attribute_names.map do |attr|
+              I18n.available_locales.map { |locale| "#{attr}_#{Mobility.normalize_locale(locale)}" }
+            end.flatten
           end
 
-          result
+          params.require(resource_params).permit(*_attribute_names)
         end
 
         define_method :find_resource do
