@@ -250,7 +250,6 @@ RSpec.describe Adminos::Generators::InstallGenerator, type: :generator do
       describe 'app/models/page.rb' do
         subject { file('app/models/page.rb') }
         it { is_expected.to contain /translates :name, .*/  }
-        it { is_expected.to contain  /accepts_nested_attributes_for :translations/  }
       end
     end
 
@@ -295,11 +294,6 @@ RSpec.describe Adminos::Generators::InstallGenerator, type: :generator do
     end
 
     context 'config' do
-      describe 'config/initializers/globalize_fields.rb' do
-        subject { file('config/initializers/globalize_fields.rb') }
-        it { is_expected.to exist }
-      end
-
       describe 'config/routes.rb' do
         subject { file('config/routes.rb') }
         it { is_expected.to contain /scope '\(:locale\)'/ }
@@ -314,7 +308,7 @@ RSpec.describe Adminos::Generators::InstallGenerator, type: :generator do
     context 'Gemfile' do
       describe 'Gemfile' do
         subject { file('Gemfile') }
-        it { is_expected.to contain  /gem 'globalize'/ }
+        it { is_expected.to contain  /gem 'mobility'/ }
       end
     end
   end

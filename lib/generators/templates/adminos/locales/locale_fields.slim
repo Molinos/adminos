@@ -1,12 +1,13 @@
 .f__fieldset
-  = f.input :name<%= "\n  = f.input :nav_name" if options.type == 'section' %>
+  = f.input :name, locale: locale
+<%= "\n  = f.input :nav_name, locale: locale" if options.type == 'section' %>
 <% attributes.each do |attribute| -%>
-<%= "  = f.input :#{attribute.name}\n" if attribute.locale -%>
+<%= "  = f.input :#{attribute.name}, locale: locale\n" if attribute.locale -%>
 <% end -%>
 
 <% if options.seo? -%>
 .f__fieldset
   .f__legend= t 'labels.admin.legend.seo'
-  = f.input :meta_title
-  = f.input :meta_description, as: :string
+  = f.input :meta_title, locale: locale
+  = f.input :meta_description, as: :string, locale: locale
 <% end -%>

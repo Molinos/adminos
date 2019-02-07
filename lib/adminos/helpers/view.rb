@@ -1,4 +1,9 @@
 module Adminos::Helpers::View
+  def adminos_form_for(object, *args, &block)
+    options = args.extract_options!
+    simple_form_for(object, *(args << options.merge(builder: Adminos::FormBuilder)), &block)
+  end
+
   def inside_layout(l, &block)
     content_for("#{l}_layout".to_sym, capture(&block))
     render(template: "layouts/#{l}")
