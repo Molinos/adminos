@@ -44,6 +44,7 @@ gem 'paper_trail'
 gem 'postal-rails', '~> 1.0'
 
 gem 'scoped_search'
+gem 'pg_search'
 
 gem 'omniauth'
 gem 'omniauth-facebook'
