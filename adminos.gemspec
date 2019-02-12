@@ -26,7 +26,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'cancancan'
   gem.add_dependency 'cocoon'
   gem.add_dependency 'awesome_nested_set'
-  gem.add_dependency 'pg_search'
 
   gem.add_development_dependency 'bundler', '~> 1.3'
   gem.add_development_dependency 'm'
