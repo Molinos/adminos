@@ -2,9 +2,8 @@
 module Adminos::Generators
   class SearchGenerator < Rails::Generators::NamedBase
     desc 'Helps you setup your search.'
-    source_root File.expand_path '../../templates/search', __FILE__
 
-    def model_configuration
+    def configure_model
       inject_into_class model_path, model do
         <<~MODEL.indent(2)
           include Adminos::Searchable
