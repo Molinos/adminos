@@ -5,7 +5,6 @@ RSpec.describe Adminos::Generators::SearchGenerator, type: :generator do
   generate('adminos article')
   generate('adminos:search Article')
 
-
   describe "app/models/article.rb" do
     subject { file("app/models/article.rb") }
 
