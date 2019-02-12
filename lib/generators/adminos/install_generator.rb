@@ -16,7 +16,7 @@ module Adminos::Generators
     class_option :locales, type: :string
     class_option :is_test, type: :boolean, default: false
     class_option :ci, type: :boolean, default: true, desc: 'Set up Gitlab CI'
-    class_option :search, type: :string, default: 'pg_search', desc: 'Set up Search'
+    class_option :search, type: :string, enum: %w[elastic pg_search], default: 'pg_search', desc: 'Set up Search'
 
     def questions
       @settings = {}
@@ -110,6 +110,8 @@ module Adminos::Generators
         gsub_file 'config/initializers/adminos.rb', /config.search_engine.+/ do
           'config.search_engine = Adminos::Search::Elastic'
         end
+
+        gsub_file 'Gemfile', "gem 'pg_search'", ''
 
         inject_into_file 'Gemfile',  "gem 'searchkick'\n", after: /gem 'adminos'.+\n/
       end
