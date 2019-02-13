@@ -6,6 +6,7 @@ require 'babosa'
 require 'devise'
 require 'cancancan'
 require 'cocoon'
+require 'simple_form'
 
 module Adminos
 
