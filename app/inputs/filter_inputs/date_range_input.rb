@@ -8,7 +8,6 @@ module FilterInputs
       out.join.html_safe
     end
 
-
     def input_html
       merged_input_options = merge_wrapper_options(input_html_options, @wrapper_options)
       [
@@ -17,12 +16,10 @@ module FilterInputs
       ].join("\n").html_safe
     end
 
-
     def gt_input_name
       "#{attribute_name}_gteq"
     end
     alias :input_name :gt_input_name
-
 
     def lt_input_name
       "#{attribute_name}_lteq"

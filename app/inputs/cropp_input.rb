@@ -23,7 +23,7 @@ class CroppInput < SimpleForm::Inputs::Base
 
     aspect_ratio = input_html_options.delete(:aspect_ratio) || '16/9'
     aspect_ratio = aspect_ratio.split('/').map(&:to_f)
-    aspect_ratio = aspect_ratio[0]/aspect_ratio[1]
+    aspect_ratio = aspect_ratio[0] / aspect_ratio[1]
 
     out << %{<div class="row"><div class="col-md-8"><div class="img-container">}
 

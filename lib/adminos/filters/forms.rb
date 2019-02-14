@@ -1,32 +1,28 @@
 module Adminos
   module Filters
     class FormBuilder < ::Adminos::FormBuilder
-
       map_type :date_range, to: SimpleForm::Inputs::DateTimeInput
+      map_type :numeric, to: SimpleForm::Inputs::NumericInput
 
       def filter(attribute_name, options = {})
         if attribute_name.present? && options[:as] ||= input_type(attribute_name)
-          # binding.pry
           template.concat input(attribute_name, options)
         end
       end
 
-
       def input_type(attribute_name)
         column = find_attribute_column(attribute_name)
-        input_type  = default_input_type(attribute_name, column, {})
+        input_type = default_input_type(attribute_name, column, {})
 
         case input_type
         when :date, :datetime
           :date_range
-        when :string, :text
+        when :string, :text, :jsonb, :email
           :string
         when :integer, :float, :decimal
-          # TODO :numeric
-          :string
+          :numeric
         when :boolean
-          # TODO :boolean
-          :string
+          :boolean
         end
       end
 
@@ -43,7 +39,6 @@ module Adminos
       end
 
       def find_mapping(input_type)
-        # binding.pry
         if mapping = self.class.mappings[input_type]
           mapping_override(mapping) || mapping
           camelized = "#{input_type.to_s.camelize}Input"

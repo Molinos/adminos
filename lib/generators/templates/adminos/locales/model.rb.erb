@@ -1,5 +1,5 @@
   extend Mobility
 
-  translates :name, <%= attributes.map{|a| ":#{a.name}, " if a.locale }.compact.join %><%= ':nav_name, ' if options.type == 'section' %>:meta_description, :meta_title, locale_accessors: true
+  translates :name, <%= attributes.map{|a| ":#{a.name}, " if a.locale }.compact.join %><%= ':nav_name, ' if options.type == 'section' %>:meta_description, :meta_title, locale_accessors: true, ransack: true
 
   validates_with LocaleValidator
