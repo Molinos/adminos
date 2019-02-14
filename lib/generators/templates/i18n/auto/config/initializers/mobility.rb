@@ -32,6 +32,8 @@ Mobility.configure do |config|
   #   locale_accessors
   # ]
 
+  config.plugins += [:ransack]
+
   # The translation cache is on by default, but you can turn it off by
   # uncommenting this line. (This may be helpful in debugging.)
   #
