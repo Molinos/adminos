@@ -51,6 +51,20 @@ If no need in SEO fields, switch it off using `--no-seo`.
     $ rails g adminos Model --no-seo
 
 ## Features
+  ### Filters
+
+  To add filtering by any attributes you need to add the required filters in the controller. Below is an example.
+
+  ```ruby
+    class Admin::ProductsController < Admin::BaseController
+      add_filter :name
+      add_filter :price
+      add_filter :published
+
+      #some code
+    end
+  ```
+  
   ### Search
 
   By default, search is enabled only on user models.
