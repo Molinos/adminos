@@ -159,6 +159,7 @@ ru:
     admin:
       add: Добавить
       add_child: Добавить подраздел
+      duplication: Дублировать
       back: Назад
       cancel: Отменить
       destroy: Удалить
