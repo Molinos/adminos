@@ -1,1 +1,1 @@
-= link_to :new, polymorphic_path( [:admin, object.class], action: :new, parent_id: object.id )
+= link_to :new, polymorphic_path( [:admin, object.class], action: :new, parent_id: object.id ), class: 'icon icon--diff -diff', title: t('labels.admin.add_child')
