@@ -46,8 +46,8 @@ ru:
     lead: Краткое описание
     published_at: Дата публикации
     created_at: Дата
-    meta_title: Title
-    meta_description: Description
+    seo_title: Title
+    seo_description: Description
     parent: Родитель
 
   activerecord:

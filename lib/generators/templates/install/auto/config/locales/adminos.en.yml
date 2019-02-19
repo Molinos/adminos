@@ -9,8 +9,8 @@ en:
     lead: Short description
     published_at: Publication date
     created_at: Date
-    meta_title: Title
-    meta_description: Description
+    seo_title: Title
+    seo_description: Description
     height: Height
     area: Area
     start: Contract starts

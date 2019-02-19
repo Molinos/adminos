@@ -49,8 +49,8 @@ module Adminos::Helpers::View
 
     t = args.first
     t =
-    if t.respond_to?(:meta_title) && t.meta_title.present?
-      t.meta_title
+    if t.respond_to?(:seo_title) && t.seo_title.present?
+      t.seo_title
     elsif t.respond_to?(:name) && t.name.present?
       t.name
     else

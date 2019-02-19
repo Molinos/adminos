@@ -3,8 +3,7 @@ html#no-js lang="ru"
   head
     meta charset="utf-8"
 
-    title= show_title || '<%= application_name.camelize %>'
-    meta name="description" content=settings&.index_meta_description
+    = display_meta_tags title: '<%= application_name.camelize %>'
 
     meta name="viewport" content="width=device-width, initial-scale=1"
     <% if ENV['CMSMG'] %>

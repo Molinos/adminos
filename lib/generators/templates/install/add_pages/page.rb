@@ -5,6 +5,7 @@ class Page < ApplicationRecord
   include Adminos::NestedSet::Duplication
   include Adminos::Slugged
   include Adminos::FlagAttrs
+  include ActiveSeo::Meta
 
   has_rich_text :content
 

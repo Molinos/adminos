@@ -39,6 +39,14 @@ module Adminos::Generators
       copy_file 'devise/devise.ru.yml', 'config/locales/devise.ru.yml'
     end
 
+    def localize_active_seo
+      file = Dir.glob('db/migrate/*.rb').grep(/\d+_create_seo_meta.rb$/).first
+
+      %w(title description keywords).each do |f|
+        gsub_file(file, /(t.string|t.text).+:#{f}/, "t.jsonb    :#{f}")
+      end
+    end
+
     def inject_routes
       inject_into_file 'config/routes.rb', '  ', before: /  .*/, force: true
       inject_into_file 'config/routes.rb', "\n  scope '(:locale)', locale: /\#{I18n.available_locales.join('|')}/ do \n", before: /namespace/
@@ -56,7 +64,7 @@ module Adminos::Generators
       file = Dir.glob('db/migrate/*.rb').grep(/\d+_create_pages.rb$/).first
       model = 'app/models/page.rb'
 
-      %w(name nav_name body meta_description meta_title).each do |f|
+      %w(name nav_name body).each do |f|
         gsub_file(file, /(t.string|t.text).+:#{f}/, "t.jsonb    :#{f}")
       end
 

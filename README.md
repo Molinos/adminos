@@ -20,7 +20,7 @@ Generate adminos model with
 
     $ rails g adminos Model field:string body:text --type=sortable
 
-Name, slug, published, meta_description and meta_title fields are always added.
+Name, slug, published, seo_description and seo_title fields are always added.
 
 Available model types are: default(if no type is present), section, sortable and table.
 

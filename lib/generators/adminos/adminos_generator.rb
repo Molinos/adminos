@@ -70,7 +70,7 @@ module Adminos::Generators
 
       file = Dir.glob('db/migrate/*.rb').grep(/\d+_create_#{table_name}.rb$/).first
       locale_attributes = attributes.map { |attr| attr.name if attr.locale }.compact
-      locale_attributes += %w(name nav_name meta_description meta_title)
+      locale_attributes += %w(name nav_name)
 
       template 'locales/locale_fields.slim', "app/views/admin/#{table_name}/_locale_fields.slim"
       template 'locales/general_fields.slim', "app/views/admin/#{table_name}/_general_fields.slim" #unless attributes.map(&:locale).delete_if{|e| e == true}.blank?

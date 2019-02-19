@@ -8,6 +8,6 @@
 <% if options.seo? -%>
 .f__fieldset
   .f__legend= t 'labels.admin.legend.seo'
-  = f.input :meta_title, locale: locale
-  = f.input :meta_description, as: :string, locale: locale
+  = f.input :seo_title, locale: locale
+  = f.input :seo_description, locale: locale
 <% end -%>

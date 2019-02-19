@@ -43,6 +43,9 @@ gem 'paper_trail'
 
 gem 'postal-rails', '~> 1.0'
 
+gem 'active_seo', github: 'hardpixel/active-seo'
+gem 'meta-tags'
+
 gem 'scoped_search'
 gem 'pg_search'
 
