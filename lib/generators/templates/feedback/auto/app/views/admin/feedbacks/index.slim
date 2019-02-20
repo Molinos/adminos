@@ -1,0 +1,28 @@
+- collection_title
+= collection_header
+
+- if collection.present?
+  - list = capture do
+    /= render partial: 'objects', object: collection
+    .table-list
+      table.table.table-hover.table-sm.table--feedback
+        tbody
+          - collection.each do |object|
+            tr
+              td.table__details
+                = object.name
+                span title="#{resource_class.human_attribute_name(:email)}"= link_to object.email, "mailto:#{object.email}"
+                span title="#{resource_class.human_attribute_name(:phone)}"= object.phone
+              td.table__text
+                = simple_format(object.message)
+              td.table-list__controls
+                = object_link_edit(object)
+              td.table-list__check
+                = admin_cb(object)
+
+  - if controller.respond_to?(:batch_action)
+    = batch_actions_tag publication: (collection.respond_to?(:set_each_published_on)),
+      nav_publication: (collection.respond_to?(:set_nav_published_on)) do
+      = list
+  - else
+    = list

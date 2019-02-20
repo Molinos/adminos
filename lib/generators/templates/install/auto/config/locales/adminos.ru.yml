@@ -248,6 +248,19 @@ ru:
       labels:
         actions:
           show: Просмотр изменений
+    feedbacks:
+      actions:
+        index:
+          header: Обратная связь
+          title: Обратная связь
+      labels:
+        actions:
+          create: Добавить feedback
+          edit: Сохранить feedback
+          edit_stay_in_place: Сохранить feedback и редактировать
+          new: Добавить feedback
+          new_stay_in_place: Добавить feedback и редактировать
+          update: Сохранить feedback
     profile:
       actions:
         index:
