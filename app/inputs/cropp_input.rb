@@ -30,6 +30,18 @@ class CroppInput < SimpleForm::Inputs::Base
     out << template.image_tag(object.send(attribute_name), data: { aspect_ratio: aspect_ratio, preview: ".#{@version}_#{attribute_name}_preview", toggle: 'cropp', coord: @coord_attribute })
 
     out << %{</div></div><div class="col-md-4">}
+    out << %{<div class="cropper-dimensions">}
+    out << %{<div class="field">}
+    out << template.label_tag(:width, 'Ширина', class: 'control-label')
+    out << template.number_field_tag(:width, nil, class: 'form-control')
+    out << %{</div>}
+    out << %{<div class="field">}
+
+    out << template.label_tag(:height, 'Высота', class: 'control-label')
+    out << template.number_field_tag(:height, nil, class: 'form-control')
+    out << %{</div>}
+
+    out << %{</div>}
     out << %{<div class="docs-preview clearfix">}
     out << %{<div class="img-preview preview-lg #{@version}_#{attribute_name}_preview"></div>}
     out << cropped
