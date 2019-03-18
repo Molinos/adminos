@@ -4,7 +4,7 @@ variables:
 before_script:
   - rvm install $(cat .ruby-version)
   - rvm use $(cat .ruby-version)
-  - gem install bundler --no-ri --no-rdoc
+  - gem install bundler --no-document
   - bundle config build.pg --with-pg-config=/usr/pgsql-9.4/bin/pg_config
   - bin/setup
 
