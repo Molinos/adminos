@@ -4,7 +4,7 @@ set :repo_url, "git@gitlab.molinos.ru:studio/#{fetch(:application)}.git"
 set :config_files, %w[config/database.yml .env]
 append :linked_files, 'config/database.yml', '.env', 'config/master.key'
 append :linked_dirs,  'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets',
-       'vendor/bundle', 'public/system', 'public/uploads'
+       'vendor/bundle', 'public/system', 'public/uploads', 'storage'
 
 set :rvm_ruby_version, Pathname(__dir__).join('../.ruby-version').read.chomp
 
