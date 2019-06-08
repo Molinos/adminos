@@ -130,7 +130,20 @@ module Adminos::Controllers::Resource
           reflect_has_one = resource_class.reflect_on_all_associations(:has_one)
           rich_text_attributes = reflect_has_one.map(&:name).map { |name| name.to_s.gsub('rich_text_', '') }.compact
 
-          _attribute_names = self.resource_class_scope.attribute_names + ids_attributes + rich_text_attributes
+          attachment_names  = reflect_has_one.
+                                map { |reflection| reflection.name.to_s }.
+                                select { |name| name.match?(/_attachment/) }.
+                                map { |name| name.chomp('_attachment').to_sym }
+
+          attachments_names = resource_class.
+                                reflect_on_all_associations(:has_many).
+                                map { |reflection| reflection.name.to_s }.
+                                select { |name| name.match?(/_attachments/) }.
+                                map { |name| name.chomp('_attachments').to_sym => [] }
+
+          _attribute_names  = self.resource_class_scope.attribute_names +
+                              attachment_names + ids_attributes +
+                              rich_text_attributes + attachments_names
 
           if resource_class.respond_to?(:translated_attribute_names)
             _attribute_names += resource_class.translated_attribute_names.map do |attr|
