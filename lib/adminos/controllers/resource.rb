@@ -139,7 +139,7 @@ module Adminos::Controllers::Resource
                                 reflect_on_all_associations(:has_many).
                                 map { |reflection| reflection.name.to_s }.
                                 select { |name| name.match?(/_attachments/) }.
-                                map { |name| name.chomp('_attachments').to_sym => [] }
+                                map { |name| { name.chomp('_attachments').to_sym => [] } }
 
           _attribute_names  = self.resource_class_scope.attribute_names +
                               attachment_names + ids_attributes +
