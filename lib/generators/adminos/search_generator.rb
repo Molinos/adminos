@@ -24,11 +24,11 @@ module Adminos::Generators
     private
 
     def model_path
-      "app/models/#{model}.rb"
+      "app/models/#{model.underscore}.rb"
     end
 
     def partial_path
-      "app/views/admin/#{model.pluralize}/index.slim"
+      "app/views/admin/#{model.underscore.pluralize}/index.slim"
     end
 
     def model
