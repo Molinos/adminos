@@ -1,4 +1,3 @@
-p Здравствуйте!
-p Вы можете подтвердить данный почтовый ящик своего аккаунта по следующей ссылке:
-p= link_to 'Активировать мой аккаунт', confirmation_url(@resource, confirmation_token: @resource.confirmation_token)
-p Если вы не регистрировались на сайте или не запрашивали повторных инструкций по активации, просто проигнорируйте это сообщение.
+p= t('devise.mailer.confirmation_instructions.greeting')
+p= t('devise.mailer.confirmation_instructions.instruction')
+p= link_to t('devise.mailer.confirmation_instructions.action'), confirmation_url(@resource, confirmation_token: @resource.confirmation_token)
