@@ -2,13 +2,13 @@
 
 .auth
   .auth__title Adminos
-  .auth__welcome Вход в систему администрирования
+  .auth__welcome= t('admin.welcome')
 
   = simple_form_for resource, as: resource_name, url: session_path(resource_name), wrapper: :auth, html: { class: 'form auth__form' } do |f|
     = f.input :otp_attempt, placeholder: '2FA'
 
     .form__submit.centered
-      = f.submit 'Войти', class: 'button button--rounded'
+      = f.submit t('admin.users.labels.form.login'), class: 'button button--rounded'
 
   - if flash.present?
     .auth__message

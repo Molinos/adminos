@@ -7,9 +7,9 @@
   table.table.table-hover.table-sm
     thead
       tr
-        th Поле
-        th Старое значение
-        th Новое значение
+        th= I18n.t('admin.paper_trail/versions.labels.field')
+        th= I18n.t('admin.paper_trail/versions.labels.old_value')
+        th= I18n.t('admin.paper_trail/versions.labels.new_value')
     tbody
       - resource.changeset.each do |field, change|
         tr

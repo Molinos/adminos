@@ -21,10 +21,10 @@
 
       .f-submit.f-submit--fixed
         .wrapper
-          = f.button :submit, 'Сохранить', class: 'btn btn-primary btn--done'
+          = f.button :submit, t('labels.admin.save'), class: 'btn btn-primary btn--done'
           /resource_button_value_main
           /= f.button :submit, 'Применить', type: 'button', name: 'stay_in_place', class: 'btn btn-secondary js-save-form'
-          = f.button :submit, 'Применить', name: 'stay_in_place', class: 'btn btn-secondary'
+          = f.button :submit, t('labels.admin.apply'), name: 'stay_in_place', class: 'btn btn-secondary'
           /resource_button_value_stay
           /= link_to resource_button_value_cancel,
               polymorphic_path([:admin, resource.class.name.underscore.pluralize]),
