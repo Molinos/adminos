@@ -1,5 +1,5 @@
-- title 'Настройки'
-= resource_header 'Настройки'
+- title t('admin.settings.actions.index.header')
+= resource_header t('admin.settings.actions.index.header')
 
 = simple_form_for [:admin, resource], url: admin_settings_path, wrapper: :admin, html: { method: :put } do |f|
   /.pill-content

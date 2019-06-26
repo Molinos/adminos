@@ -1,11 +1,11 @@
 .f__fieldset
-  .f__legend Двухфакторная аутентификация
+  .f__legend=t('authentication.two_factor')
   - if resource.otp_required_for_login
     .f
       .f__wrapper
         .f-field
           .f-field__label
-            label.f-label Ключ
+            label.f-label=t('authentication.key')
           .f-field__container
             .f-field__text =resource.otp.secret
         .f-field
@@ -15,10 +15,10 @@
             = google_authenticator_qrcode(resource)
         .f-field
           .f-field__container
-            = link_to "Отключить 2FA", toggle_two_factor_admin_profile_path, method: :post, class: 'btn btn btn-primary'
+            = link_to t('authentication.switch_off_2fa'), toggle_two_factor_admin_profile_path, method: :post, class: 'btn btn btn-primary'
   - else
     .f
       .f__wrapper
         .f-field
           .f-field__container
-            = link_to "Включить 2FA", toggle_two_factor_admin_profile_path, method: :post, class: 'btn btn btn-primary'
+            = link_to t('authentication.switch_on_2fa'), toggle_two_factor_admin_profile_path, method: :post, class: 'btn btn btn-primary'

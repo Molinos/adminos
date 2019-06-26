@@ -13,12 +13,12 @@ class ExportXlsx
 
   def generate_xlsx
     headers = [
-      'Объект',
-      'Тип',
-      'Событие',
-      'Пользователь',
-      'Дата',
-      'Изменения'
+      I18n.t('activerecord.attributes.paper_trail/version.item'),
+      I18n.t('activerecord.attributes.paper_trail/version.item_type'),
+      I18n.t('activerecord.attributes.paper_trail/version.event'),
+      I18n.t('activerecord.attributes.paper_trail/version.whodunnit'),
+      I18n.t('attributes.created_at'),
+      I18n.t('admin.paper_trail/version.labels.changes')
     ]
 
     data = @versions.map do |x|

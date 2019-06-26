@@ -7,7 +7,7 @@ class CarrierwaveInput < SimpleForm::Inputs::Base
     out << %{<div class="f-file">}
     out << @builder.hidden_field("#{attribute_name}_cache")
     out << %{  <label class="f-file__selection js-file">}
-    out << %{    <span class="f-file__button">Выбрать</span>}
+    out << %{    <span class="f-file__button">#{I18n.t('labels.admin.choose')}</span>}
     out << @builder.file_field(attribute_name, input_html_options)
     out << %{    <span class="f-file__selected"></span>}
     out << %{  </label>}
@@ -25,7 +25,7 @@ class CarrierwaveInput < SimpleForm::Inputs::Base
     out << @builder.input_field("remove_#{attribute_name}", as: :boolean)
     out << %{  <label class="f-check">}
     out << %{    <span class="f-check__box"></span>}
-    out << %{    <span class="f-check__label">Удалить</span>}
+    out << %{    <span class="f-check__label">#{I18n.t('labels.admin.destroy')}</span>}
     out << %{  </label>}
     out << %{</div>}
     out.join
