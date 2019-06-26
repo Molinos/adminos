@@ -5,7 +5,7 @@ class CheckboxInput < SimpleForm::Inputs::BooleanInput
     out << %{ <label class="f-check" for="#{object_name}_#{attribute_name}">}
     out << @builder.input_field("#{attribute_name}", as: :boolean)
     out << %{   <span class="f-check__box"></span>}
-    out << %{   <span class="f-check__label">Опубликовано</span>}
+    out << %{   <span class="f-check__label">#{I18n.t('labels.admin.published')}</span>}
     out << %{ </label>}
     out << %{</div>}
     out.join.html_safe

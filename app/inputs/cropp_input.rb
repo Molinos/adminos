@@ -6,7 +6,7 @@ class CroppInput < SimpleForm::Inputs::Base
     out = []
     out << %{<div class="f-file">}
     out << %{  <label class="f-file__selection js-file">}
-    out << %{    <span class="f-file__button">Выбрать</span>}
+    out << %{    <span class="f-file__button">#{I18n.t('labels.admin.choose')}</span>}
     out << @builder.file_field(attribute_name, input_html_options)
     out << @builder.hidden_field(@coord_attribute)
     out << %{    <span class="f-file__selected"></span>}
@@ -32,12 +32,12 @@ class CroppInput < SimpleForm::Inputs::Base
     out << %{</div></div><div class="col-md-4">}
     out << %{<div class="cropper-dimensions">}
     out << %{<div class="field">}
-    out << template.label_tag(:width, 'Ширина', class: 'control-label')
+    out << template.label_tag(:width, I18n.t('labels.admin.image.width'), class: 'control-label')
     out << template.number_field_tag(:width, nil, class: 'form-control')
     out << %{</div>}
     out << %{<div class="field">}
 
-    out << template.label_tag(:height, 'Высота', class: 'control-label')
+    out << template.label_tag(:height, I18n.t('labels.admin.image.height'), class: 'control-label')
     out << template.number_field_tag(:height, nil, class: 'form-control')
     out << %{</div>}
 
@@ -58,7 +58,7 @@ class CroppInput < SimpleForm::Inputs::Base
 
     out << template.image_tag(object.send("#{@version}_#{attribute_name}_cropped"))
 
-    out << %{<figcaption class="figure-caption text-center">Cropped image</figcaption></figure></div>}
+    out << %{<figcaption class="figure-caption text-center">#{I18n.t('labels.admin.image.width.cropped')}</figcaption></figure></div>}
     out.join
   end
 end

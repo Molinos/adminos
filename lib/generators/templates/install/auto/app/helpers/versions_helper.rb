@@ -2,7 +2,7 @@ module VersionsHelper
   def version_item(object)
     case object.item_type
     when 'Settings'
-      name = 'Настройки'
+      name = t('admin.settings.actions.index.header')
       link = :settings
     when 'User'
       name = object.item.email
@@ -14,9 +14,9 @@ module VersionsHelper
 
   def version_event(object)
     if version_login? object
-      'Логин'
+      t('labels.admin.login')
     elsif version_registration? object
-      'Регистрация'
+      t('labels.admin.sign_up')
     else
       t "admin.actions.#{object.event}"
     end
