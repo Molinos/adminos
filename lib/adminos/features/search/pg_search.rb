@@ -6,9 +6,8 @@ module Adminos
       included do
         include ::PgSearch
 
-        pg_search_scope :search_by, against: :email, using: {
-          tsearch: { any_word: true, prefix: true }
-        }
+        pg_search_scope :search_by, against: self.class.columns.map { |c| c.name.to_sym if [:string, :text].include?(c.type) }.compact,
+          using: { tsearch: { any_word: true, prefix: true } }
       end
 
       class_methods do
