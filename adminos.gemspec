@@ -15,7 +15,7 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'path'
   gem.add_dependency 'jquery-fileupload-rails'
-  gem.add_dependency 'railties', '~> 5.1', '~> 6.0'
+  gem.add_dependency 'railties', '~> 5.1', '~> 6.x'
   gem.add_dependency 'dotenv-rails'
   gem.add_dependency 'slim-rails'
   gem.add_dependency 'friendly_id'
