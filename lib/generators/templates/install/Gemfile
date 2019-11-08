@@ -7,7 +7,7 @@ gem 'puma', '~> 3.7'
 gem 'jbuilder', '~> 2.5'
 gem 'role_model'
 gem 'webpacker', '~> 3.5'
-gem "actiontext", github: "rails/actiontext", require: "action_text", ref: "cfe4674d3637c746cdb3c2b5131e2de498775529"
+# gem "actiontext", github: "rails/actiontext", require: "action_text", ref: "cfe4674d3637c746cdb3c2b5131e2de498775529"
 gem "image_processing", "~> 1.2" # for Active Storage variants
 
 group :development do
