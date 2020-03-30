@@ -28,7 +28,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'awesome_nested_set'
   gem.add_dependency 'ransack'
 
-  gem.add_development_dependency 'bundler', '~> 1.3'
   gem.add_development_dependency 'm'
   gem.add_development_dependency 'rails'
   gem.add_development_dependency 'rake'
