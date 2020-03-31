@@ -1,12 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.2'
-gem 'pg'
 gem 'puma', '~> 3.7'
 
-gem 'jbuilder', '~> 2.5'
 gem 'role_model'
-gem 'webpacker', '~> 3.5'
 gem "image_processing", "~> 1.2" # for Active Storage variants
 
 group :development do
@@ -20,8 +16,6 @@ group :development do
 
   gem 'guard'
   gem 'guard-livereload', '~> 2.5', require: false
-
-  gem 'listen', '~> 3.0.5'
 end
 
 group :development, :test do
