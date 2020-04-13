@@ -3,19 +3,37 @@ Description = <%= fetch(:application) %> Sidekiq Background Worker
 After = multi-user.target
 
 [Service]
-Type = simple
+
+# As of v6.0.6, Sidekiq automatically supports systemd's `Type=notify` and watchdog service
+# monitoring. If you are using an earlier version of Sidekiq, change this to `Type=simple`
+# and remove the `WatchdogSec=5` line.
+
+Type=notify
+WatchdogSec=5
+
 Environment = RAILS_ENV=<%= fetch(:rails_env) %>
 Environment = PWD=<%= current_path %>
 EnvironmentFile=/etc/environment
 WorkingDirectory = <%= current_path %>
-ExecStart = /home/<%= fetch(:user) %>/.rvm/bin/rvm <%= fetch(:rvm_ruby_version) %> do <%= current_path %>/bin/sidekiq -e <%= fetch(:rails_env) %> -L <%= shared_path %>/log/sidekiq.log -P <%= shared_path %>/tmp/pids/sidekiq.pid
-ExecStop = /home/<%= fetch(:user) %>/.rvm/bin/rvm <%= fetch(:rvm_ruby_version) %> do <%= current_path %>/bin/sidekiqctl stop <%= shared_path %>/tmp/pids/sidekiq.pid
+
+ExecStart = /home/<%= fetch(:user) %>/.rvm/bin/rvm <%= fetch(:rvm_ruby_version) %> do <%= current_path %>/bin/sidekiq -C <%= current_path %>/<%= fetch(:sidekiq_config) %> -e <%= fetch(:rails_env) %>
+ExecReload = /usr/bin/kill -TSTP $MAINPID
+
 User = <%= fetch(:user) %>
 Group = <%= fetch(:group) || fetch(:user) %>
 KillMode = process
 UMask = 0002
+
+# if we crash, restart
 RestartSec = 1
-Restart = always
+Restart=on-failure
+
+# output goes to /var/log/syslog
+StandardOutput=syslog
+StandardError=syslog
+
+# This will default to "bundler" if we don't specify it
+SyslogIdentifier=sidekiq
 
 [Install]
 WantedBy = multi-user.target
