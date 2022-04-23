@@ -31,7 +31,7 @@ module Adminos::Controllers::Resource
         end
 
         define_method :update do
-          resource.update_attributes(parameters)
+          resource.update(parameters)
           respond_with(resource, location: self.instance_eval(&location))
         end
 
