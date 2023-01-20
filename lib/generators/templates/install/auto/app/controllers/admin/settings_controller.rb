@@ -2,7 +2,7 @@ class Admin::SettingsController < Admin::BaseController
   load_and_authorize_resource param_method: :strong_params, class: 'Settings'
 
   def update
-    if resource.update_attributes strong_params
+    if resource.update strong_params
       flash[:notice] = t 'flash.actions.update.notice'
       redirect_to action: :edit
     else
