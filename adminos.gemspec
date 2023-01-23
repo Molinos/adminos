@@ -1,6 +1,6 @@
 Gem::Specification.new do |gem|
   gem.name          = 'adminos'
-  gem.version       = '1.0.0-rc.3'
+  gem.version       = '1.0.0-rc.4'
   gem.authors       = ['RavWar', 'milushov', 'abuhtoyarov', 'SiebenSieben']
   gem.email         = ['studio@molinos.ru']
   gem.homepage      = 'https://gitlab.molinos.ru/global/adminos'
@@ -28,7 +28,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'awesome_nested_set'
   gem.add_dependency 'ransack'
 
-  gem.add_development_dependency 'bundler', '~> 1.3'
+  gem.add_development_dependency 'bundler', '~> 2.2'
   gem.add_development_dependency 'm'
   gem.add_development_dependency 'rails'
   gem.add_development_dependency 'rake'
