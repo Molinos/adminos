@@ -19,6 +19,6 @@ end
 
 gem 'guard-minitest', '~> 2.4'
 gem 'friendly_id'
-gem 'activerecord-nulldb-adapter', git: 'git://github.com/nulldb/nulldb.git'
+gem 'activerecord-nulldb-adapter', git: 'https://github.com/nulldb/nulldb.git'
 gem 'sqlite3', '~> 1.3.6'
 gem 'database_cleaner'
