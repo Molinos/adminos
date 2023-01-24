@@ -51,5 +51,5 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-vkontakte'
 
-gem 'axlsx', git: 'https://github.com/randym/axlsx.git'
+gem 'axlsx'
 gem 'spreadsheet_architect'
