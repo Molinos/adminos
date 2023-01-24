@@ -20,5 +20,5 @@ end
 gem 'guard-minitest', '~> 2.4'
 gem 'friendly_id'
 gem 'activerecord-nulldb-adapter'
-gem 'sqlite3', '~> 1.3.6'
+gem 'sqlite3', '~> 1.4'
 gem 'database_cleaner'
