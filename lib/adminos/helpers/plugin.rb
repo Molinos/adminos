@@ -1,5 +1,5 @@
 module Adminos::Helpers::Plugin
-  def plugins_name
+  def plugin_names
     Adminos::Plugins::Base.descendants.map(&:name)
   end
 end

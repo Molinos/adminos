@@ -1,6 +1,6 @@
 RSpec.describe Adminos::Helpers::Plugin, type: :helper do
-  describe '#plugins_name' do
-    let(:plugin_names_list) { helper.plugins_name }
+  describe '#plugin_names' do
+    let(:plugin_names_list) { helper.plugin_names }
 
     before do
       class SomePlugin < Adminos::Plugins::Base
