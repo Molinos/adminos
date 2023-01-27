@@ -10,11 +10,11 @@ RSpec.describe Adminos::Helpers::Plugin, type: :helper do
       end
     end
 
-    it 'list plugin names in not empty' do
+    it 'list of plugin names is not empty' do
       expect(plugin_names_list).not_to be_empty
     end
 
-    it 'return list plugin names' do
+    it 'return list of plugin names' do
       expect(plugin_names_list).to include(SomePlugin.name)
     end
   end
