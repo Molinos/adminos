@@ -42,6 +42,7 @@ module Adminos
       ActionView::Base.send :include, Helpers::View
       ActionView::Base.send :include, Helpers::Admin
       ActionView::Base.send :include, Helpers::Bootstrap
+      ActionView::Base.send :include, Helpers::Plugin
     end
 
     initializer 'adminos.controller_helpers' do
