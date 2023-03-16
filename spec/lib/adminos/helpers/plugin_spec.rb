@@ -1,21 +1,23 @@
 RSpec.describe Adminos::Helpers::Plugin, type: :helper do
-  describe '#plugin_names' do
-    let(:plugin_names_list) { helper.plugin_names }
+  describe '#plugins' do
+    subject(:plugins) { helper.plugins }
 
     before do
       class SomePlugin < Adminos::Plugins::Base
-        def self.name
-          'some name'
+        def self.title
+          'some title'
         end
       end
     end
 
-    it 'list of plugin names is not empty' do
-      expect(plugin_names_list).not_to be_empty
+    let(:plugin_titles) { plugins.map(&:title) }
+
+    it 'plugin list is not empty' do
+      expect(plugins).not_to be_empty
     end
 
-    it 'return list of plugin names' do
-      expect(plugin_names_list).to include(SomePlugin.name)
+    it 'return plugin title' do
+      expect(plugin_titles).to include(SomePlugin.title)
     end
   end
 end
