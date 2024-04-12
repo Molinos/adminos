@@ -145,8 +145,8 @@ module Adminos::Controllers::Resource
                               attachment_names + ids_attributes +
                               rich_text_attributes + attachments_names
 
-          if resource_class.respond_to?(:translated_attribute_names)
-            _attribute_names += resource_class.translated_attribute_names.map do |attr|
+          if resource_class.respond_to?(:mobility_attributes)
+            _attribute_names += resource_class.mobility_attributes.map do |attr|
               I18n.available_locales.map { |locale| "#{attr}_#{Mobility.normalize_locale(locale)}" }
             end.flatten
           end
