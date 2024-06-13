@@ -155,6 +155,13 @@ module Adminos::Helpers::Admin
     end
   end
 
+  def admin_cb_all
+    content_tag :label, class: 'f-check' do
+      concat(check_box_tag 'select-all')
+      concat(content_tag(:span, '', class: 'f-check__box'))
+    end
+  end
+
   def batch_actions_tag(*args, &block)
     options = args.extract_options!
     with_destroy = options.delete(:with_destroy)
